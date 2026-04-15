@@ -101,32 +101,34 @@
     box-shadow:3px 3px 0 var(--border);
   }
 
-  /* ─── Logos plateformes flottants (sur les côtés du hero) ─── */
+  /* ─── Logos plateformes flottants (bords du hero, derrière le texte) ─── */
   .plat{
-    position:absolute;z-index:4;
-    width:62px;height:62px;border-radius:50%;
+    position:absolute;z-index:1;pointer-events:none;
+    width:56px;height:56px;border-radius:50%;
     background:var(--paper);color:var(--ink);
     border:2.5px solid var(--border);
     display:flex;align-items:center;justify-content:center;
     box-shadow:4px 4px 0 var(--border);
     animation:float-slow 7s ease-in-out infinite;
-    transition:transform .2s ease, box-shadow .2s ease;
   }
-  .plat:hover{transform:translate(-3px,-3px) rotate(-4deg);box-shadow:6px 6px 0 var(--border);animation-play-state:paused}
-  .plat svg{width:26px;height:26px;display:block}
+  .plat svg{width:24px;height:24px;display:block}
   .plat.meta{background:var(--paper);color:#0866FF}
   .plat.ig{background:var(--pop);color:var(--paper)}
   .plat.tt{background:var(--ink);color:var(--paper)}
   .plat.snap{background:#FFFC00;color:var(--ink)}
   .plat.x{background:var(--ink);color:var(--paper)}
   .plat.google{background:var(--paper);color:var(--ink)}
-  /* positions spécifiques */
-  .plat.p-meta{top:140px;left:2%;animation-delay:0s}
-  .plat.p-ig{top:46%;left:1%;animation-delay:.8s;animation-duration:8s}
-  .plat.p-snap{bottom:140px;left:3%;animation-delay:1.4s;animation-duration:7.5s}
-  .plat.p-google{top:130px;right:2%;animation-delay:.4s;animation-duration:7.8s}
-  .plat.p-tt{top:48%;right:1%;animation-delay:1.2s;animation-duration:8.2s}
-  .plat.p-x{bottom:140px;right:3%;animation-delay:1.8s;animation-duration:7s}
+  /* positions : collées aux bords, pas sur le contenu */
+  .plat.p-meta{top:110px;left:10px;animation-delay:0s}
+  .plat.p-ig{top:50%;left:-14px;animation-delay:.8s;animation-duration:8s}
+  .plat.p-snap{bottom:90px;left:10px;animation-delay:1.4s;animation-duration:7.5s}
+  .plat.p-google{top:110px;right:10px;animation-delay:.4s;animation-duration:7.8s}
+  .plat.p-tt{top:50%;right:-14px;animation-delay:1.2s;animation-duration:8.2s}
+  .plat.p-x{bottom:90px;right:10px;animation-delay:1.8s;animation-duration:7s}
+  @media (max-width:1200px){
+    .plat{width:48px;height:48px}
+    .plat svg{width:20px;height:20px}
+  }
   .display{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em}
   .serif{font-family:'Instrument Serif',serif;font-weight:400}
   .mono{font-family:'JetBrains Mono',monospace;font-weight:500}
@@ -645,6 +647,17 @@
     border:2.5px solid var(--border);border-radius:10px;
     padding:22px 24px;
     box-shadow:var(--shadow-sm);
+  }
+  .cp-counter-solo{
+    margin-bottom:26px;padding:28px 32px;
+    display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;
+  }
+  .cp-counter-solo .lbl{margin-bottom:10px}
+  .cp-counter-solo .label-big{margin-bottom:0;font-size:26px}
+  .cp-counter-solo .cp-stepper{justify-self:end}
+  @media (max-width:700px){
+    .cp-counter-solo{grid-template-columns:1fr;gap:16px;text-align:left}
+    .cp-counter-solo .cp-stepper{justify-self:start}
   }
   .cp-counter .lbl{
     font-family:'JetBrains Mono',monospace;
@@ -1287,48 +1300,34 @@
       <div class="cp-head">
         <div>
           <h3>Construis <span class="serif-em">ton</span> pack.</h3>
-          <p>Tu choisis le volume. On calcule. Plus tu prends, plus on t'offre.</p>
+          <p>Tu choisis le nombre de vidéos. Plus tu en prends, plus on t'offre de créas.</p>
         </div>
       </div>
 
-      <div class="cp-grid">
-        <div class="cp-counter">
-          <div class="lbl">
-            <span>◆ Vidéos IA</span>
-            <span class="unit-price">50€ / unité</span>
-          </div>
-          <div class="label-big">Vidéos <em>sur-mesure</em></div>
-          <div class="cp-stepper">
-            <button class="cp-btn" data-act="dec" data-target="video" aria-label="Moins de vidéos">−</button>
-            <div class="cp-val" id="cpVideo">1</div>
-            <button class="cp-btn" data-act="inc" data-target="video" aria-label="Plus de vidéos">+</button>
-          </div>
+      <div class="cp-counter cp-counter-solo">
+        <div class="lbl">
+          <span>◆ Nombre de vidéos IA</span>
+          <span class="unit-price">50€ / vidéo</span>
         </div>
-
-        <div class="cp-counter" style="background:var(--paper)">
-          <div class="lbl">
-            <span>◆ Statiques HD</span>
-            <span class="unit-price">15€ / unité</span>
-          </div>
-          <div class="label-big">Statiques <em>perso</em></div>
-          <div class="cp-stepper">
-            <button class="cp-btn" data-act="dec" data-target="static" aria-label="Moins de statiques">−</button>
-            <div class="cp-val" id="cpStatic">0</div>
-            <button class="cp-btn" data-act="inc" data-target="static" aria-label="Plus de statiques">+</button>
-          </div>
+        <div class="label-big">Vidéos <em>sur-mesure</em></div>
+        <div class="cp-stepper">
+          <button class="cp-btn" data-act="dec" data-target="video" aria-label="Moins de vidéos">−</button>
+          <div class="cp-val" id="cpVideo">1</div>
+          <button class="cp-btn" data-act="inc" data-target="video" aria-label="Plus de vidéos">+</button>
         </div>
       </div>
 
       <div class="cp-bonus">
         <div class="cp-bonus-hd">
           <span class="gift">🎁</span>
-          <span>Bonus débloqués</span>
+          <span>Bonus progressifs</span>
         </div>
         <ul class="cp-bonus-list" id="cpBonus">
           <li data-min="3"><span class="tick"></span>3 vidéos → <strong style="margin-left:4px">+5 statiques offerts</strong></li>
-          <li data-min="5"><span class="tick"></span>5 vidéos → <strong style="margin-left:4px">+10 statiques offerts</strong></li>
-          <li data-min="8"><span class="tick"></span>8 vidéos → <strong style="margin-left:4px">+15 statiques offerts + 10% remise</strong></li>
-          <li data-min="12"><span class="tick"></span>12 vidéos → <strong style="margin-left:4px">+25 statiques offerts + 15% remise</strong></li>
+          <li data-min="5"><span class="tick"></span>5 vidéos → <strong style="margin-left:4px">+1 vidéo &amp; +5 statiques offerts</strong></li>
+          <li data-min="7"><span class="tick"></span>7 vidéos → <strong style="margin-left:4px">+2 vidéos &amp; +7 statiques offerts</strong></li>
+          <li data-min="10"><span class="tick"></span>10 vidéos → <strong style="margin-left:4px">+3 vidéos &amp; +10 statiques offerts</strong></li>
+          <li data-min="15"><span class="tick"></span>15 vidéos → <strong style="margin-left:4px">+5 vidéos &amp; +15 statiques offerts</strong></li>
         </ul>
       </div>
 
@@ -1336,7 +1335,7 @@
         <div>
           <div class="total-lbl">Total de ton pack</div>
           <div class="total-val"><span class="cur">€</span><span id="cpTotal">50</span></div>
-          <div class="summary" id="cpSummary">1 vidéo · 0 statique</div>
+          <div class="summary" id="cpSummary">1 vidéo · 0 bonus</div>
         </div>
         <button class="btn btn-create" id="openCustom">
           Créer mon pack →
@@ -1744,19 +1743,18 @@
     if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
   });
 
-  /* ───── Pack sur-mesure builder ───── */
+  /* ───── Pack sur-mesure builder (vidéos only + bonus progressifs) ───── */
   const PRICE_VIDEO = 50;
-  const PRICE_STATIC = 15;
   const TIERS = [
-    { minVideo: 12, bonusStatic: 25, discount: 0.15 },
-    { minVideo: 8,  bonusStatic: 15, discount: 0.10 },
-    { minVideo: 5,  bonusStatic: 10, discount: 0 },
-    { minVideo: 3,  bonusStatic: 5,  discount: 0 },
+    { minVideo: 15, bonusVideo: 5, bonusStatic: 15 },
+    { minVideo: 10, bonusVideo: 3, bonusStatic: 10 },
+    { minVideo: 7,  bonusVideo: 2, bonusStatic: 7  },
+    { minVideo: 5,  bonusVideo: 1, bonusStatic: 5  },
+    { minVideo: 3,  bonusVideo: 0, bonusStatic: 5  },
   ];
 
-  const state = { video: 1, static: 0 };
+  const state = { video: 1 };
   const cpVideo = document.getElementById('cpVideo');
-  const cpStatic = document.getElementById('cpStatic');
   const cpTotal = document.getElementById('cpTotal');
   const cpSummary = document.getElementById('cpSummary');
   const cpBonusItems = document.querySelectorAll('#cpBonus li');
@@ -1764,27 +1762,30 @@
   const openCustomBtn = document.getElementById('openCustom');
 
   function currentTier(v){
-    return TIERS.find(t => v >= t.minVideo) || { minVideo:0, bonusStatic:0, discount:0 };
+    return TIERS.find(t => v >= t.minVideo) || { minVideo:0, bonusVideo:0, bonusStatic:0 };
   }
 
   function renderCustom(){
-    const v = state.video, s = state.static;
+    const v = state.video;
     const tier = currentTier(v);
+    const bonusVideo = tier.bonusVideo;
     const bonusStatic = tier.bonusStatic;
-    const discount = tier.discount;
-
-    const rawTotal = v * PRICE_VIDEO + s * PRICE_STATIC;
-    const total = Math.round(rawTotal * (1 - discount));
+    const total = v * PRICE_VIDEO;
 
     cpVideo.textContent = v;
-    cpStatic.textContent = s;
     cpTotal.textContent = total;
 
     // summary ligne
-    const totalStatic = s + bonusStatic;
-    const parts = [`${v} vidéo${v>1?'s':''}`, `${totalStatic} statique${totalStatic>1?'s':''}`];
-    if(bonusStatic > 0) parts.push(`dont <span class="bonus">${bonusStatic} offert${bonusStatic>1?'s':''}</span>`);
-    if(discount > 0) parts.push(`<span class="bonus">−${discount*100}%</span>`);
+    const totalVideos = v + bonusVideo;
+    const parts = [`${totalVideos} vidéo${totalVideos>1?'s':''}`];
+    if(bonusStatic > 0) parts.push(`${bonusStatic} statique${bonusStatic>1?'s':''}`);
+    else parts.push('0 bonus');
+    if(bonusVideo > 0 || bonusStatic > 0){
+      const b = [];
+      if(bonusVideo > 0) b.push(`${bonusVideo} vidéo${bonusVideo>1?'s':''}`);
+      if(bonusStatic > 0) b.push(`${bonusStatic} statique${bonusStatic>1?'s':''}`);
+      parts.push(`<span class="bonus">${b.join(' + ')} offert${(bonusVideo+bonusStatic)>1?'s':''}</span>`);
+    }
     cpSummary.innerHTML = parts.join(' · ');
 
     // bonus list states
@@ -1793,32 +1794,33 @@
       li.classList.toggle('on', v >= min);
     });
 
-    // disable minus buttons when at minimum
+    // disable minus at minimum
     document.querySelector('.cp-btn[data-target="video"][data-act="dec"]').disabled = (v <= 1);
-    document.querySelector('.cp-btn[data-target="static"][data-act="dec"]').disabled = (s <= 0);
   }
 
   cpBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const target = btn.dataset.target;
       const act = btn.dataset.act;
       const delta = act === 'inc' ? 1 : -1;
-      const min = target === 'video' ? 1 : 0;
-      const max = target === 'video' ? 20 : 30;
-      state[target] = Math.max(min, Math.min(max, state[target] + delta));
+      state.video = Math.max(1, Math.min(20, state.video + delta));
       renderCustom();
     });
   });
 
   openCustomBtn.addEventListener('click', () => {
-    const v = state.video, s = state.static;
+    const v = state.video;
     const tier = currentTier(v);
-    const totalStatic = s + tier.bonusStatic;
-    const total = Math.round((v * PRICE_VIDEO + s * PRICE_STATIC) * (1 - tier.discount));
-    const bonusTxt = tier.bonusStatic > 0 ? ` (dont ${tier.bonusStatic} statique${tier.bonusStatic>1?'s':''} offert${tier.bonusStatic>1?'s':''})` : '';
-    const discountTxt = tier.discount > 0 ? ` avec ${tier.discount*100}% de remise` : '';
+    const total = v * PRICE_VIDEO;
+    const totalVideos = v + tier.bonusVideo;
+    let bonusTxt = '';
+    if(tier.bonusVideo > 0 || tier.bonusStatic > 0){
+      const bits = [];
+      if(tier.bonusVideo > 0) bits.push(`${tier.bonusVideo} vidéo${tier.bonusVideo>1?'s':''}`);
+      if(tier.bonusStatic > 0) bits.push(`${tier.bonusStatic} statique${tier.bonusStatic>1?'s':''}`);
+      bonusTxt = ` + ${bits.join(' + ')} offert${(tier.bonusVideo+tier.bonusStatic)>1?'s':''}`;
+    }
     const msg = encodeURIComponent(
-      `Hello, je veux créer un pack sur-mesure : ${v} vidéo${v>1?'s':''} + ${totalStatic} statique${totalStatic>1?'s':''}${bonusTxt}. Total : ${total}€${discountTxt}.`
+      `Hello, je veux créer un pack sur-mesure : ${v} vidéo${v>1?'s':''}${bonusTxt}. Total : ${total}€.`
     );
     window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank', 'noopener');
   });
