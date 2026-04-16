@@ -122,8 +122,26 @@
 
   /* ─────────── HERO ─────────── */
   .hero{
-    padding:72px 0 96px;
+    padding:64px 0 96px;
     position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-10%;left:30%;width:80%;height:120%;
+    background:radial-gradient(50% 50% at 50% 50%, rgba(124,58,237,.22), transparent 70%);
+    pointer-events:none;z-index:0;
+    filter:blur(8px);
+  }
+  .hero::after{
+    content:"hookd.";
+    position:absolute;bottom:-80px;left:-40px;
+    font-family:inherit;font-weight:800;font-style:italic;
+    font-size:clamp(220px,28vw,440px);line-height:.82;letter-spacing:-0.06em;
+    color:var(--v-soft);opacity:.9;
+    pointer-events:none;user-select:none;z-index:0;
+    white-space:nowrap;
   }
   .top-strip{
     display:flex;justify-content:space-between;align-items:center;
@@ -166,25 +184,32 @@
   /* Bandeau stats en bas du hero */
   .hero-stats{
     margin-top:80px;
-    background:var(--bg);color:var(--text);
-    border:1px solid var(--line);border-radius:16px;
-    padding:28px 32px;
-    box-shadow:var(--shadow);
+    background:#0F172A;color:#fff;
+    border:1px solid #0F172A;border-radius:20px;
+    padding:36px 40px;
+    box-shadow:0 4px 8px rgba(15,23,42,.12), 0 32px 72px rgba(124,58,237,.22);
     display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
     align-items:center;gap:24px;
+    position:relative;overflow:hidden;
   }
+  .hero-stats::before{
+    content:"";
+    position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(60% 100% at 100% 100%, rgba(124,58,237,.35), transparent 70%);
+  }
+  .hero-stats > *{position:relative;z-index:1}
   .hs-item{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
   .hs-big{
     font-family:inherit;
-    font-size:clamp(30px,3.6vw,44px);line-height:1;letter-spacing:-0.035em;font-weight:700;
-    display:flex;align-items:baseline;gap:2px;color:var(--text);
+    font-size:clamp(36px,4.6vw,56px);line-height:.95;letter-spacing:-0.045em;font-weight:800;
+    display:flex;align-items:baseline;gap:2px;color:#fff;
   }
-  .hs-big .plus-mini{font-size:.55em;color:var(--v);margin-left:2px}
+  .hs-big .plus-mini{font-size:.55em;color:#C4B5FD;margin-left:2px}
   .hs-lbl{
     font-family:inherit;font-size:13px;font-weight:500;
-    letter-spacing:0;text-transform:none;color:var(--muted);
+    letter-spacing:0;text-transform:none;color:rgba(255,255,255,.55);
   }
-  .hs-sep{width:1px;height:36px;background:var(--line)}
+  .hs-sep{width:1px;height:44px;background:rgba(255,255,255,.12)}
   @media (max-width:1000px){
     .hero-stats{grid-template-columns:1fr 1fr;padding:22px;gap:18px}
     .hs-sep{display:none}
@@ -192,19 +217,20 @@
 
   h1.headline{
     font-family:inherit;
-    font-size:clamp(44px,6.2vw,84px);
-    line-height:1.05;
-    letter-spacing:-0.035em;
-    margin:0;font-weight:700;
+    font-size:clamp(56px,8.8vw,128px);
+    line-height:.95;
+    letter-spacing:-0.05em;
+    margin:0;font-weight:800;
     color:var(--text);
   }
   h1.headline .serif-em{
     font-family:inherit;
-    font-style:normal;font-weight:700;
+    font-style:italic;font-weight:800;
     color:var(--v);
     position:relative;display:inline;
     padding:0;
     background:transparent;
+    letter-spacing:-0.055em;
   }
   h1.headline .serif-em::before{display:none}
 
@@ -309,23 +335,27 @@
     display:inline-flex;align-items:center;gap:8px;
     font-family:inherit;
     font-size:12.5px;text-transform:none;letter-spacing:0;
-    color:var(--v);margin-bottom:16px;font-weight:600;
+    color:var(--v);margin-bottom:20px;font-weight:600;
     background:var(--v-soft);border:1px solid var(--v-border);
-    padding:6px 12px;border-radius:999px;
+    padding:7px 14px;border-radius:999px;
     box-shadow:none;
+  }
+  .kicker::before{
+    content:"";width:6px;height:6px;border-radius:50%;
+    background:var(--v);box-shadow:0 0 0 3px rgba(124,58,237,.2);
   }
   .kicker.pop{background:var(--v-soft);color:var(--v);border-color:var(--v-border)}
   .kicker.lime{background:var(--v-soft);color:var(--v);border-color:var(--v-border)}
   h2{
     font-family:inherit;
-    font-size:clamp(34px,4.8vw,60px);
-    line-height:1.08;letter-spacing:-0.035em;margin:0;font-weight:700;color:var(--text);
+    font-size:clamp(40px,6vw,76px);
+    line-height:1;letter-spacing:-0.045em;margin:0;font-weight:800;color:var(--text);
   }
   h2 .serif-em{
     font-family:inherit;
-    font-style:normal;font-weight:700;color:var(--v);
+    font-style:italic;font-weight:800;color:var(--v);letter-spacing:-0.05em;
   }
-  h2 em{font-style:normal;font-weight:700;color:var(--v)}
+  h2 em{font-style:italic;font-weight:800;color:var(--v);letter-spacing:-0.05em}
   .section-sub{font-size:17px;color:var(--muted);margin:0;max-width:52ch;line-height:1.6;font-weight:400}
   .section-sub strong{color:var(--text);font-weight:600;background:transparent;padding:0}
 
@@ -679,21 +709,122 @@
   .tier-cta.featured{background:var(--v);color:#fff}
   .tier-cta.featured:hover{background:var(--v-hover);box-shadow:0 4px 16px rgba(124,58,237,.3)}
   .tiers-foot{
+    display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
     font-family:inherit;
     font-size:13.5px;color:var(--muted);text-align:center;
-    padding:18px 20px;background:var(--soft);
-    border:1px solid var(--line);border-radius:12px;
+    padding:22px 24px;background:var(--soft);
+    border:1px solid var(--line);border-radius:14px;
     margin:0 0 50px;letter-spacing:0;font-weight:400;
   }
   .tiers-foot strong{color:var(--text);font-weight:600}
+  .tf-lbl{
+    display:inline-block;padding:4px 10px;border-radius:999px;
+    background:var(--v);color:#fff;
+    font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  }
+
+  /* ─── Archi-design pricing ─── */
+  .pricing-section{position:relative;overflow:hidden;padding:40px 0 0}
+  .pricing-backtype{
+    position:absolute;top:-30px;left:-30px;right:0;
+    font-family:inherit;font-weight:800;font-style:italic;
+    font-size:clamp(180px,24vw,360px);line-height:.82;letter-spacing:-0.055em;
+    color:var(--v-soft);
+    pointer-events:none;user-select:none;z-index:0;
+    white-space:nowrap;
+  }
+  .pricing-section .wrap{position:relative;z-index:1}
+  .pricing-head{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:48px;
+    align-items:end;margin-bottom:56px;
+  }
+  .pricing-h2{
+    font-family:inherit;font-weight:700;
+    font-size:clamp(44px,6.4vw,84px);letter-spacing:-0.04em;line-height:.98;
+    margin:10px 0 0;color:var(--text);
+  }
+  .pricing-h2 em{font-style:normal;color:var(--v);font-weight:700}
+  .pricing-head-right{display:flex;flex-direction:column;gap:24px}
+  .pricing-head-right .section-sub{margin:0;max-width:460px}
+  .pricing-meta{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:4px;padding:18px 0 0;
+    border-top:1px solid var(--line);
+  }
+  .pm-item{display:flex;flex-direction:column;gap:4px}
+  .pm-item b{
+    font-family:inherit;font-weight:700;
+    font-size:clamp(30px,3.4vw,42px);letter-spacing:-0.03em;line-height:1;
+    color:var(--text);
+  }
+  .pm-item span{font-size:12px;color:var(--muted);font-weight:500}
+
+  .tiers-grid{
+    display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:18px;
+    margin-bottom:28px;
+    align-items:stretch;
+  }
+  .tier{overflow:hidden}
+  .tier-idx{
+    position:absolute;top:18px;right:22px;
+    font-family:inherit;font-weight:800;font-style:italic;
+    font-size:72px;line-height:1;letter-spacing:-0.05em;
+    color:var(--v-soft);
+    pointer-events:none;z-index:0;
+  }
+  .tier.featured .tier-idx{color:rgba(255,255,255,.08)}
+  .tier.dark .tier-idx{color:rgba(196,181,253,.15)}
+  .tier-head-left{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .tier > *:not(.tier-glow):not(.tier-idx){position:relative;z-index:1}
+
+  .tier.featured{
+    background:#0F172A;color:#fff;border-color:#0F172A;
+    box-shadow:0 4px 8px rgba(15,23,42,.12), 0 24px 64px rgba(124,58,237,.28);
+  }
+  .tier.featured:hover{
+    transform:translateY(-18px);
+    box-shadow:0 8px 16px rgba(15,23,42,.16), 0 32px 72px rgba(124,58,237,.4);
+  }
+  .tier.featured .tier-tag{background:rgba(196,181,253,.14);color:#C4B5FD;border-color:rgba(196,181,253,.2)}
+  .tier.featured .tier-sub{color:rgba(255,255,255,.6)}
+  .tier.featured .tier-for{color:rgba(255,255,255,.65);border-bottom-color:rgba(255,255,255,.12)}
+  .tier.featured .feats li{color:rgba(255,255,255,.88)}
+  .tier.featured .feats li .check{background:rgba(196,181,253,.16);color:#C4B5FD}
+  .tier.featured .feats li strong{color:#fff}
+  .tier.featured .tier-cta.featured{background:var(--v);color:#fff}
+  .tier.featured .tier-cta.featured:hover{background:#8B5CF6;box-shadow:0 4px 24px rgba(124,58,237,.55)}
+
+  .tier-glow{
+    position:absolute;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(124,58,237,.38), transparent 60%),
+      radial-gradient(40% 40% at 100% 100%, rgba(139,92,246,.22), transparent 70%);
+  }
+  .tier-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    top:-14px;
+  }
+  .tb-dot{
+    display:inline-block;width:6px;height:6px;border-radius:50%;
+    background:#A7F3D0;box-shadow:0 0 0 3px rgba(167,243,208,.25);
+    animation:tbPulse 2s ease-in-out infinite;
+  }
+  @keyframes tbPulse{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:.55;transform:scale(1.15)}
+  }
+
+  .tier-price .num{font-size:64px}
+  .tier.featured .tier-price{color:#fff}
+  .tier.featured .tier-price .cur{color:#C4B5FD;opacity:1}
 
   @media (max-width:1000px){
     .tiers-grid{grid-template-columns:1fr;gap:20px}
     .tier.featured{transform:none}
-    .tier.featured:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-    .countdown{flex-wrap:wrap}
-    .cd-box{min-width:54px;padding:8px 10px}
-    .cd-box span{font-size:20px}
+    .tier.featured:hover{transform:translateY(-4px);box-shadow:0 8px 16px rgba(15,23,42,.16), 0 24px 56px rgba(124,58,237,.3)}
+    .pricing-head{grid-template-columns:1fr;gap:24px}
+    .pricing-backtype{font-size:clamp(120px,28vw,200px)}
+    .tier-idx{font-size:56px}
   }
 
   /* ─── Pack sur-mesure (builder) ─── */
@@ -1651,84 +1782,39 @@
 </section>
 
 <!-- PRICING -->
-<section id="offre">
+<section id="offre" class="pricing-section">
+  <div class="pricing-backtype">PACKS</div>
   <div class="wrap">
-    <div class="section-head" style="margin-bottom:48px">
+    <div class="section-head pricing-head">
       <div>
         <span class="kicker">05 · Offre</span>
-        <h2>Des créas <em>livrées</em>.<br>Des packs pensés pour scaler.</h2>
+        <h2 class="pricing-h2">Trois packs.<br>Un seul <em>objectif</em> :<br>scaler.</h2>
       </div>
-      <p class="section-sub">Starter pour tester. Pro pour scaler. Scale pour dominer. Ou construis ton pack sur-mesure. Tout est livré en 24h.</p>
-    </div>
-
-    <!-- PACK DE LANCEMENT avec countdown -->
-    <div class="pricing-wrap">
-      <span class="sticker sticker-corner">PROMO LANCEMENT · −25%</span>
-      <div class="pricing-grid">
-        <div>
-          <div class="countdown-wrap">
-            <div class="countdown-lbl">Offre qui disparaît dans</div>
-            <div class="countdown" id="countdown">
-              <div class="cd-box"><span id="cdDays">00</span><em>jours</em></div>
-              <div class="cd-sep">:</div>
-              <div class="cd-box"><span id="cdHours">00</span><em>heures</em></div>
-              <div class="cd-sep">:</div>
-              <div class="cd-box"><span id="cdMins">00</span><em>min</em></div>
-              <div class="cd-sep">:</div>
-              <div class="cd-box"><span id="cdSecs">00</span><em>sec</em></div>
-            </div>
-          </div>
-          <h2 style="margin-top:28px">Pack de<br><span class="serif-em">lancement.</span></h2>
-          <p class="section-sub" style="margin-top:20px;color:var(--ink)">
-            Les features du pack <strong>Starter</strong>, mais au prix lancement :
-            <strong>150€</strong> au lieu de 199€. Limité dans le temps.
-          </p>
-        </div>
-
-        <div class="offer">
-          <div class="offer-top">
-            <span class="offer-tag">Lancement −25%</span>
-            <span class="offer-slots">3 places · Avril</span>
-          </div>
-          <h3>Pack de lancement</h3>
-          <p class="sub-offer">Starter (3 vidéos × 3 hooks) au prix promo 150€.</p>
-
-          <div class="price">
-            <span class="num" id="displayPrice">150</span>
-            <span class="cur">€</span>
-            <span class="unit" style="text-decoration:line-through;margin-right:6px">199€</span>
-            <span class="unit">one-shot</span>
-          </div>
-
-          <ul class="feats">
-            <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Brief 1:1 + formulaire (5 min)</li>
-            <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> <strong>3 vidéos UGC IA × 3 hooks = 9 variantes</strong></li>
-            <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> 10 statiques HD multi-formats</li>
-            <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Scripts AIDA / PAS / BAB inclus</li>
-            <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Droits complets · Livraison &lt; 24h</li>
-          </ul>
-
-          <button class="btn btn-offer" id="openOffer" data-pack="launch" data-price="150">
-            Profiter de l'offre →
-          </button>
+      <div class="pricing-head-right">
+        <p class="section-sub">Starter pour tester. Pro pour scaler. Scale pour dominer. Tout est livré en moins de 24h, droits complets inclus.</p>
+        <div class="pricing-meta">
+          <div class="pm-item"><b>24h</b><span>Livraison</span></div>
+          <div class="pm-item"><b>∞</b><span>Révisions Scale</span></div>
+          <div class="pm-item"><b>0€</b><span>Abonnement</span></div>
         </div>
       </div>
     </div>
 
     <!-- 3 TIERS STANDARDS -->
-    <div class="tiers-head">
-      <div class="kicker">Après la promo, nos 3 formules standard</div>
-      <h3 class="tiers-title">Starter · Pro · <span class="serif-em">Scale</span></h3>
-    </div>
     <div class="tiers-grid">
 
       <!-- STARTER -->
-      <div class="tier">
+      <div class="tier" data-idx="01">
+        <div class="tier-idx">01</div>
         <div class="tier-head">
-          <span class="tier-tag">Starter</span>
-          <span class="tier-sub">Pour tester vite</span>
+          <div class="tier-head-left">
+            <span class="tier-tag">Starter</span>
+            <span class="tier-sub">Pour tester vite</span>
+          </div>
         </div>
-        <div class="tier-price"><span class="num">199</span><span class="cur">€</span></div>
+        <div class="tier-price">
+          <span class="num">199</span><span class="cur">€</span>
+        </div>
         <p class="tier-for">Dropshippeurs · Solo · Tests produit</p>
         <ul class="feats">
           <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> <strong>3 vidéos × 3 hooks = 9 variantes</strong></li>
@@ -1738,18 +1824,25 @@
           <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Livraison &lt; 24h · Droits complets</li>
         </ul>
         <button class="btn tier-cta" data-pack="starter" data-price="199">
-          Choisir Starter →
+          Choisir Starter
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
         </button>
       </div>
 
       <!-- PRO (featured) -->
-      <div class="tier featured">
-        <span class="tier-badge">Plus populaire</span>
+      <div class="tier featured" data-idx="02">
+        <div class="tier-glow"></div>
+        <span class="tier-badge"><span class="tb-dot"></span> Plus populaire</span>
+        <div class="tier-idx">02</div>
         <div class="tier-head">
-          <span class="tier-tag">Pro</span>
-          <span class="tier-sub">Pour scaler</span>
+          <div class="tier-head-left">
+            <span class="tier-tag">Pro</span>
+            <span class="tier-sub">Pour scaler</span>
+          </div>
         </div>
-        <div class="tier-price"><span class="num">299</span><span class="cur">€</span></div>
+        <div class="tier-price">
+          <span class="num">299</span><span class="cur">€</span>
+        </div>
         <p class="tier-for">E-commerçants 10–100k€/mois · DTC</p>
         <ul class="feats">
           <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> <strong>5 vidéos × 3 hooks = 15 variantes</strong></li>
@@ -1759,17 +1852,23 @@
           <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Livraison &lt; 24h · Droits complets</li>
         </ul>
         <button class="btn tier-cta featured" data-pack="pro" data-price="299">
-          Choisir Pro →
+          Choisir Pro
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
         </button>
       </div>
 
       <!-- SCALE -->
-      <div class="tier dark">
+      <div class="tier dark" data-idx="03">
+        <div class="tier-idx">03</div>
         <div class="tier-head">
-          <span class="tier-tag">Scale</span>
-          <span class="tier-sub">Pour dominer</span>
+          <div class="tier-head-left">
+            <span class="tier-tag">Scale</span>
+            <span class="tier-sub">Pour dominer</span>
+          </div>
         </div>
-        <div class="tier-price"><span class="num">499</span><span class="cur">€</span></div>
+        <div class="tier-price">
+          <span class="num">499</span><span class="cur">€</span>
+        </div>
         <p class="tier-for">Marques 100k+/mois · Agences</p>
         <ul class="feats">
           <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> <strong>10 vidéos × 3 hooks = 30 variantes</strong></li>
@@ -1779,13 +1878,15 @@
           <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Révisions illimitées · Livraison &lt; 24h</li>
         </ul>
         <button class="btn tier-cta dark" data-pack="scale" data-price="499">
-          Choisir Scale →
+          Choisir Scale
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
         </button>
       </div>
     </div>
 
     <p class="tiers-foot">
-      <strong>Option upsell :</strong> vidéo supplémentaire <strong>+79€</strong> · adaptation langue (EN/ES/DE) <strong>+30€/vidéo</strong>
+      <span class="tf-lbl">UPSELL</span>
+      Vidéo supplémentaire <strong>+79€</strong> · Adaptation langue EN/ES/DE <strong>+30€/vidéo</strong>
     </p>
 
     <!-- PACK SUR-MESURE -->
@@ -2328,39 +2429,10 @@
 </div>
 
 <script>
-  /* ───── Countdown (7 jours depuis premier visit, stocké en localStorage) ───── */
-  (function(){
-    const KEY = 'hookd_launch_end';
-    let end = parseInt(localStorage.getItem(KEY), 10);
-    const now = Date.now();
-    if(!end || end < now){
-      end = now + 7 * 24 * 60 * 60 * 1000;
-      localStorage.setItem(KEY, end.toString());
-    }
-    const d = document.getElementById('cdDays');
-    const h = document.getElementById('cdHours');
-    const m = document.getElementById('cdMins');
-    const s = document.getElementById('cdSecs');
-    function tick(){
-      const diff = Math.max(0, end - Date.now());
-      const days = Math.floor(diff / 86400000);
-      const hours = Math.floor((diff % 86400000) / 3600000);
-      const mins = Math.floor((diff % 3600000) / 60000);
-      const secs = Math.floor((diff % 60000) / 1000);
-      d.textContent = String(days).padStart(2,'0');
-      h.textContent = String(hours).padStart(2,'0');
-      m.textContent = String(mins).padStart(2,'0');
-      s.textContent = String(secs).padStart(2,'0');
-    }
-    tick();
-    setInterval(tick, 1000);
-  })();
-
   /* ───── Config globale ───── */
   const WA_NUMBER = "33642852291";
 
   const PACK_LABELS = {
-    launch:  'Pack de lancement · 150€',
     starter: 'Starter · 199€',
     pro:     'Pro · 299€',
     scale:   'Scale · 499€',
