@@ -1002,46 +1002,7 @@
     transform:translateY(12px);transition:transform .25s ease;
   }
   .modal-backdrop.open .modal{transform:translateY(0)}
-  .modal h3{font-family:'Space Grotesk',sans-serif;font-size:30px;margin:0 0 6px;letter-spacing:-0.015em;font-weight:700}
-  .modal .m-sub{color:var(--ink-soft);font-size:14px;margin:0 0 24px;font-weight:500}
-  .opt-list{display:grid;gap:10px;margin:0 0 18px}
-  .opt{
-    display:flex;align-items:center;gap:14px;
-    padding:14px 16px;
-    border:2.5px solid var(--border);background:var(--paper);
-    border-radius:10px;cursor:pointer;
-    transition:all .15s ease;font-size:14.5px;color:var(--ink);font-weight:600;
-    box-shadow:var(--shadow-sm);
-  }
-  .opt:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow)}
-  .opt.active{background:var(--lime)}
-  .opt .ico{width:22px;height:22px;display:flex;align-items:center;justify-content:center;color:var(--ink)}
-  .code-box{display:flex;gap:8px;margin-top:6px}
-  .code-box input{
-    flex:1;padding:14px 16px;border:2.5px solid var(--border);
-    border-radius:10px;background:var(--paper);font-size:14.5px;
-    font-family:inherit;color:var(--ink);outline:none;letter-spacing:.08em;text-transform:uppercase;
-    font-weight:600;
-  }
-  .code-box input:focus{background:var(--lime)}
-  .code-box button{
-    padding:0 18px;border-radius:10px;
-    border:2.5px solid var(--border);background:var(--ink);color:var(--paper);
-    cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;
-  }
-  .code-feedback{font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:10px;min-height:18px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
-  .code-feedback.ok{color:#2C8C3F}
-  .code-feedback.ko{color:var(--pop)}
-
-  /* multi-step modal */
-  .m-step{}
-  .m-progress{display:flex;gap:8px;margin-bottom:20px}
-  .m-progress .dot{
-    width:28px;height:4px;border-radius:2px;
-    background:var(--ink);opacity:.15;
-  }
-  .m-progress .dot.on{background:var(--pop);opacity:1}
-  .m-progress .dot.done{background:var(--ink);opacity:1}
+  /* Y/N buttons (used in step 5 of onboarding) */
   .yn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
   .yn{
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
@@ -1056,29 +1017,6 @@
   .yn:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow)}
   .yn-big{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;letter-spacing:-0.02em;color:var(--ink);line-height:1}
   .yn-sm{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
-  .m-back{
-    margin-top:6px;background:transparent;border:none;
-    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
-    letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
-    cursor:pointer;padding:6px 2px;
-  }
-  .m-back:hover{color:var(--ink)}
-  .modal-footer{
-    display:flex;justify-content:space-between;align-items:center;
-    padding-top:20px;border-top:2px dashed var(--border);margin-top:20px;gap:14px;flex-wrap:wrap;
-  }
-  .modal-total{font-family:'Space Grotesk',sans-serif;font-size:32px;letter-spacing:-0.02em;font-weight:700}
-  .modal-total .was{text-decoration:line-through;color:var(--muted);font-size:17px;margin-right:10px;font-weight:500}
-  .modal-cta{
-    display:inline-flex;align-items:center;gap:8px;
-    background:#25D366;color:#fff;
-    padding:13px 18px;border-radius:999px;
-    border:2.5px solid var(--border);
-    font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;
-    transition:transform .15s ease, box-shadow .15s ease, opacity .2s ease;
-  }
-  .modal-cta:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-sm)}
-  .modal-cta[disabled]{opacity:.4;pointer-events:none}
   .m-close{
     position:absolute;top:14px;right:14px;width:36px;height:36px;
     background:var(--paper);border:2.5px solid var(--border);
@@ -1088,6 +1026,282 @@
     transition:transform .2s ease;
   }
   .m-close:hover{transform:rotate(90deg)}
+
+  /* ═══════════════════════════════════════════════════
+     ONBOARDING FUNNEL — NÉOBRUTALISTE AGENCE
+     flat, 4px borders, 10px hard shadows, zero radius,
+     oversized type, mono everywhere
+  ══════════════════════════════════════════════════════ */
+  .modal.onb{
+    max-width:620px;padding:0;
+    border-width:4px;border-radius:0;
+    box-shadow:12px 12px 0 var(--border);
+    background:var(--paper);
+    overflow:hidden;
+  }
+  .modal.onb .m-close{
+    border-width:3px;border-radius:0;
+    background:var(--pop);color:var(--paper);
+    font-weight:900;font-size:20px;
+    top:14px;right:14px;width:38px;height:38px;
+    box-shadow:3px 3px 0 var(--border);
+  }
+  .modal.onb .m-close:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--border)}
+
+  /* Topbar : progress + counter */
+  .onb .m-head{
+    display:flex;align-items:center;gap:14px;
+    padding:16px 24px;border-bottom:4px solid var(--border);
+    background:var(--ink);color:var(--paper);
+  }
+  .onb .m-head .m-bar{
+    flex:1;height:10px;background:rgba(247,239,213,.15);
+    border:2px solid var(--paper);border-radius:0;overflow:hidden;
+  }
+  .onb .m-bar-fill{
+    height:100%;background:var(--lime);width:0%;
+    transition:width .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .onb .m-count{
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--paper);
+    white-space:nowrap;
+  }
+  .onb .m-count b{color:var(--lime);font-size:13px}
+
+  /* Step body wrapper */
+  .onb .m-step{padding:32px 32px 28px;position:relative}
+
+  /* Kicker + numéro géant en filigrane */
+  .onb .m-kicker{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+    background:var(--lime);padding:5px 10px;
+    border:2.5px solid var(--border);
+    box-shadow:3px 3px 0 var(--border);
+    margin-bottom:16px;
+  }
+  .onb .m-giant{
+    position:absolute;top:20px;right:28px;
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:88px;line-height:1;
+    -webkit-text-stroke:2px var(--border);color:transparent;
+    letter-spacing:-0.05em;opacity:.8;pointer-events:none;user-select:none;
+  }
+  .onb .m-title{
+    font-family:'Space Grotesk',sans-serif;font-size:34px;line-height:1.02;
+    letter-spacing:-0.035em;margin:0 0 10px;font-weight:700;color:var(--ink);
+    text-transform:none;max-width:86%;
+  }
+  .onb .m-title em{
+    font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+    color:var(--pop);
+  }
+  .onb .m-title u{
+    text-decoration:none;background:var(--lime);
+    padding:0 4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  }
+  .onb .m-desc{
+    color:var(--ink-soft);font-size:14.5px;margin:0 0 22px;font-weight:500;
+    line-height:1.5;max-width:90%;
+  }
+
+  /* ─── QCM ─── */
+  .qcm{display:grid;gap:10px;margin:0 0 10px}
+  .qcm.cols-2{grid-template-columns:1fr 1fr}
+  .qcm-opt{
+    display:flex;align-items:center;gap:12px;
+    padding:14px 16px;
+    border:3px solid var(--border);background:var(--paper);
+    border-radius:0;cursor:pointer;
+    font-family:inherit;font-size:14.5px;color:var(--ink);font-weight:600;
+    box-shadow:4px 4px 0 var(--border);
+    text-align:left;
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    position:relative;
+  }
+  .qcm-opt:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--border);background:#fff8dd}
+  .qcm-opt.active{background:var(--lime);transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--border)}
+  .qcm-opt .emoji{font-size:19px;line-height:1}
+  .qcm-opt .check{
+    margin-left:auto;width:22px;height:22px;border-radius:0;
+    border:2.5px solid var(--border);background:var(--paper);
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;color:var(--ink);font-weight:900;flex-shrink:0;
+  }
+  .qcm-opt.active .check{background:var(--ink);color:var(--lime)}
+  .qcm-opt.active .check::after{content:"✓"}
+
+  /* ─── Y/N grid override (néobruta) ─── */
+  .onb .yn-grid{gap:12px}
+  .onb .yn{
+    border-width:3px;border-radius:0;padding:36px 16px;
+    box-shadow:5px 5px 0 var(--border);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .onb .yn:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--border)}
+  .onb .yn-big{font-size:42px;font-weight:700;letter-spacing:-0.03em}
+  .onb .yn.yes{background:var(--lime)}
+  .onb .yn.no{background:var(--paper)}
+
+  /* ─── Inputs ─── */
+  .inp-wrap{margin-bottom:12px}
+  .inp-wrap label{
+    display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;
+    font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+    margin-bottom:7px;
+  }
+  .inp-wrap label .req{color:var(--pop)}
+  .inp, .txt{
+    width:100%;padding:14px 15px;border:3px solid var(--border);
+    border-radius:0;background:var(--paper);font-size:15px;
+    font-family:inherit;color:var(--ink);outline:none;font-weight:500;
+    box-shadow:4px 4px 0 var(--border);
+    transition:background .15s ease, transform .12s ease, box-shadow .12s ease;
+  }
+  .inp:focus, .txt:focus{background:var(--lime);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--border)}
+  .txt{min-height:110px;resize:vertical;line-height:1.5}
+  .inp.err, .txt.err{border-color:var(--pop);background:#ffe9e3}
+
+  .contact-grid{display:grid;gap:14px}
+  .contact-grid .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+  /* ─── Footer / nav ─── */
+  .m-nav{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px;
+    padding-top:18px;border-top:3px dashed var(--border);
+  }
+  .btn-next{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 22px;border-radius:0;
+    border:3px solid var(--border);background:var(--ink);color:var(--paper);
+    font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;
+    cursor:pointer;letter-spacing:.02em;text-transform:uppercase;
+    transition:transform .13s ease, box-shadow .13s ease, opacity .2s ease;
+    box-shadow:5px 5px 0 var(--border);text-decoration:none;
+  }
+  .btn-next:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--border)}
+  .btn-next[disabled]{opacity:.32;pointer-events:none}
+  .btn-next.pop{background:var(--pop);color:var(--paper)}
+  .btn-next.lime{background:var(--lime);color:var(--ink)}
+  .btn-next.xl{padding:18px 30px;font-size:15.5px}
+  .onb .m-back{
+    margin:0;background:transparent;border:none;
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+    cursor:pointer;padding:6px 2px;
+  }
+  .onb .m-back:hover{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px}
+
+  /* ─── Welcome screen (hero du funnel) ─── */
+  .welcome-wrap{padding:36px 32px 30px;text-align:left;position:relative}
+  .welcome-wrap::before{
+    content:"◆ ◆ ◆";position:absolute;top:14px;left:32px;
+    font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;
+    letter-spacing:.3em;color:var(--pop);
+  }
+  .welcome-wrap .wsticker{
+    position:absolute;top:28px;right:32px;
+    transform:rotate(9deg);
+    background:var(--pop);color:var(--paper);
+    border:3px solid var(--border);
+    padding:7px 12px;font-family:'JetBrains Mono',monospace;
+    font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    box-shadow:4px 4px 0 var(--border);
+  }
+  .welcome-wrap h3{
+    font-family:'Space Grotesk',sans-serif;font-size:46px;line-height:.98;
+    letter-spacing:-0.04em;margin:44px 0 14px;font-weight:700;text-transform:none;
+    color:var(--ink);
+  }
+  .welcome-wrap h3 em{
+    font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--pop);
+  }
+  .welcome-wrap h3 u{
+    text-decoration:none;background:var(--lime);
+    padding:0 6px;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  }
+  .welcome-wrap p.intro{
+    color:var(--ink);font-size:15.5px;margin:0 0 22px;font-weight:500;
+    line-height:1.5;max-width:95%;
+  }
+  .welcome-meta{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0 0 24px;
+    border:3px solid var(--border);background:var(--paper);
+    box-shadow:5px 5px 0 var(--border);
+  }
+  .welcome-meta .wm{
+    padding:14px 12px;text-align:center;
+    border-right:3px solid var(--border);
+  }
+  .welcome-meta .wm:last-child{border-right:none}
+  .welcome-meta .wm b{
+    display:block;font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;
+    color:var(--ink);letter-spacing:-0.02em;line-height:1;
+  }
+  .welcome-meta .wm span{
+    display:block;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:9.5px;
+    font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  }
+
+  /* ─── Success screen ─── */
+  .success-wrap{padding:40px 32px 28px;text-align:center;position:relative}
+  .success-check{
+    width:96px;height:96px;border-radius:0;
+    background:var(--lime);border:4px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    margin:4px auto 24px;box-shadow:8px 8px 0 var(--border);
+    font-size:54px;color:var(--ink);line-height:1;font-weight:900;
+    animation:pop-in .45s cubic-bezier(.3,1.4,.5,1) both;
+    transform-origin:center;
+  }
+  @keyframes pop-in{
+    0%{transform:scale(0) rotate(-25deg)}
+    55%{transform:scale(1.12) rotate(8deg)}
+    100%{transform:scale(1) rotate(-4deg)}
+  }
+  .success-wrap h3{
+    font-family:'Space Grotesk',sans-serif;font-size:36px;line-height:1.02;
+    letter-spacing:-0.035em;margin:0 0 12px;font-weight:700;text-transform:none;
+  }
+  .success-wrap h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--pop)}
+  .success-wrap p.sub{color:var(--ink);font-size:15px;margin:0 0 22px;font-weight:500;line-height:1.5}
+  .success-next{
+    display:grid;gap:10px;text-align:left;margin:20px 0 22px;
+    padding:18px;border:3px dashed var(--border);border-radius:0;background:var(--paper);
+  }
+  .success-next .ln{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--ink);font-weight:500;line-height:1.45}
+  .success-next .ln b{font-weight:700}
+  .success-next .ln::before{
+    content:"▸";color:var(--pop);font-weight:900;flex-shrink:0;font-size:16px;line-height:1.2;
+  }
+
+  .err-note{
+    margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;
+    color:var(--pop);font-weight:700;letter-spacing:.08em;text-transform:uppercase;min-height:16px;
+  }
+  .sending{
+    display:inline-block;width:14px;height:14px;
+    border:2.5px solid var(--paper);border-top-color:transparent;
+    animation:spin-slow .7s linear infinite;
+  }
+
+  @media (max-width: 620px){
+    .modal.onb{max-width:100%;border-width:3px;box-shadow:8px 8px 0 var(--border)}
+    .onb .m-step{padding:26px 20px 22px}
+    .onb .m-title{font-size:26px}
+    .onb .m-giant{font-size:60px;top:14px;right:18px}
+    .welcome-wrap{padding:30px 20px 22px}
+    .welcome-wrap h3{font-size:34px;margin-top:38px}
+    .welcome-wrap .wsticker{right:20px;font-size:10px}
+    .welcome-meta .wm b{font-size:18px}
+    .qcm.cols-2{grid-template-columns:1fr}
+    .contact-grid .row2{grid-template-columns:1fr}
+    .btn-next{padding:13px 18px;font-size:13px}
+    .success-wrap{padding:32px 20px 22px}
+    .success-wrap h3{font-size:28px}
+  }
 
   /* ─────────── RESPONSIVE ─────────── */
   @media (max-width: 1000px){
@@ -1892,89 +2106,288 @@
   </div>
 </footer>
 
-<!-- MODAL -->
+<!-- ONBOARDING MODAL -->
 <div class="modal-backdrop" id="modal">
-  <div class="modal">
+  <div class="modal onb">
     <button class="m-close" id="closeModal" aria-label="Fermer">×</button>
-    <!-- STEP 1 : Source -->
-    <div class="m-step" data-step="1">
-      <div class="m-progress"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
-      <h3>Comment tu nous as connu ?</h3>
-      <p class="m-sub">Aide-nous à savoir d'où viennent les meilleurs clients.</p>
 
-      <div class="opt-list">
-        <div class="opt" data-src="discord">
-          <span class="ico">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          </span>
-          Discord
+    <!-- Header : progress bar + compteur (caché sur welcome + success) -->
+    <div class="m-head" id="mHead" style="display:none">
+      <div class="m-bar"><div class="m-bar-fill" id="mBarFill"></div></div>
+      <div class="m-count"><b id="mCountNow">1</b> / <span id="mCountTot">12</span></div>
+    </div>
+
+    <!-- STEP 0 : Welcome -->
+    <div class="m-step" data-step="welcome" style="padding:0">
+      <div class="welcome-wrap">
+        <span class="wsticker">★ Onboarding · v1</span>
+        <h3>Dis-nous <em>qui tu es.</em><br>On prépare un <u>pack sur-mesure</u>.</h3>
+        <p class="intro">12 questions courtes pour qu'on arrive préparés. <strong>Zéro bullshit, zéro commercial.</strong> À la fin, Jorys relit ton brief à la main et revient sous 24h.</p>
+        <div class="welcome-meta">
+          <div class="wm"><b>12</b><span>Questions</span></div>
+          <div class="wm"><b>~90s</b><span>Au total</span></div>
+          <div class="wm"><b>&lt; 24h</b><span>Réponse</span></div>
         </div>
-        <div class="opt" data-src="twitter">
-          <span class="ico">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </span>
-          X (Twitter)
-        </div>
-        <div class="opt" data-src="bao">
-          <span class="ico">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-          </span>
-          Bouche à oreille
-        </div>
-        <div class="opt" data-src="google">
-          <span class="ico">
-            <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-          </span>
-          Google
-        </div>
+      </div>
+      <div class="m-nav" style="justify-content:space-between;padding:0 32px 28px 32px;border-top:none">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)">◆ Prêt ?</span>
+        <button class="btn-next pop xl" id="onbStart">On y va <span aria-hidden="true">→</span></button>
       </div>
     </div>
 
-    <!-- STEP 2 : code promo Y/N -->
+    <!-- STEP 1 : type de business -->
+    <div class="m-step" data-step="1" style="display:none">
+      <span class="m-giant">01</span>
+      <div class="m-kicker">◆ 01 / Ton business</div>
+      <h3 class="m-title">Tu fais <em>quoi</em>, au juste ?</h3>
+      <p class="m-desc">Pour qu'on parle la même langue dès la première réponse.</p>
+      <div class="qcm" data-field="business" data-mode="single">
+        <div class="qcm-opt" data-val="ecommerce"><span class="emoji">🛍️</span> E-commerce / DTC <span class="check"></span></div>
+        <div class="qcm-opt" data-val="saas"><span class="emoji">💻</span> SaaS / App mobile <span class="check"></span></div>
+        <div class="qcm-opt" data-val="services"><span class="emoji">🧑‍💼</span> Services / Agence <span class="check"></span></div>
+        <div class="qcm-opt" data-val="info"><span class="emoji">🎓</span> Info-produit / Formation <span class="check"></span></div>
+        <div class="qcm-opt" data-val="autre"><span class="emoji">✴️</span> Autre <span class="check"></span></div>
+      </div>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next" data-next disabled>Suivant →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 : Produit -->
     <div class="m-step" data-step="2" style="display:none">
-      <div class="m-progress"><span class="dot done"></span><span class="dot on"></span><span class="dot"></span></div>
-      <h3>T'as un code promo ?</h3>
-      <p class="m-sub">Sinon pas de panique, direction WhatsApp.</p>
-
-      <div class="yn-grid">
-        <button class="yn yes" id="ynYes">
-          <span class="yn-big">OUI</span>
-          <span class="yn-sm">J'ai un code</span>
-        </button>
-        <button class="yn no" id="ynNo">
-          <span class="yn-big">NON</span>
-          <span class="yn-sm">Passer</span>
-        </button>
+      <span class="m-giant">02</span>
+      <div class="m-kicker">◆ 02 / Ton produit</div>
+      <h3 class="m-title">Qu'est-ce que <em>tu vends</em> ?</h3>
+      <p class="m-desc">En une phrase. Comme à un pote au bar.</p>
+      <div class="inp-wrap">
+        <label>Produit / service <span class="req">*</span></label>
+        <input type="text" class="inp" data-field="product" placeholder="Ex. Des bougies parfumées artisanales en cire de soja" maxlength="180"/>
       </div>
-
-      <button class="m-back" id="backTo1">← Retour</button>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next" data-next disabled>Suivant →</button>
+      </div>
     </div>
 
-    <!-- STEP 3 : code input -->
+    <!-- STEP 3 : URL -->
     <div class="m-step" data-step="3" style="display:none">
-      <div class="m-progress"><span class="dot done"></span><span class="dot done"></span><span class="dot on"></span></div>
-      <h3>Entre ton code.</h3>
-      <p class="m-sub">Tape ton code promo ci-dessous.</p>
-
-      <div class="code-box">
-        <input id="codeInput" placeholder="CODE" autocomplete="off" />
-        <button id="applyCode">Appliquer</button>
+      <span class="m-giant">03</span>
+      <div class="m-kicker">◆ 03 / Ton site</div>
+      <h3 class="m-title">Où est-ce qu'on peut <em>voir ça</em> ?</h3>
+      <p class="m-desc">Ton shop, site, lien Instagram, portfolio — ce que t'as.</p>
+      <div class="inp-wrap">
+        <label>URL <span class="req">*</span></label>
+        <input type="text" class="inp" data-field="url" placeholder="https://tamarque.com" autocomplete="url" inputmode="url"/>
       </div>
-      <div class="code-feedback" id="codeFeedback"></div>
-
-      <button class="m-back" id="backTo2">← Retour</button>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next" data-next disabled>Suivant →</button>
+      </div>
     </div>
 
-    <!-- FOOTER (toujours visible) -->
-    <div class="modal-footer">
-      <div class="modal-total">
-        <span class="was" id="was" style="display:none">150€</span>
-        <span id="total">150€</span>
+    <!-- STEP 4 : CA mensuel -->
+    <div class="m-step" data-step="4" style="display:none">
+      <span class="m-giant">04</span>
+      <div class="m-kicker">◆ 04 / Ton CA</div>
+      <h3 class="m-title">Ton <em>chiffre d'affaires</em> mensuel actuel ?</h3>
+      <p class="m-desc">Juste pour calibrer le pack. Aucune info n'est partagée.</p>
+      <div class="qcm" data-field="revenue" data-mode="single">
+        <div class="qcm-opt" data-val="0-1k"><span class="emoji">🌱</span> Juste lancé (&lt; 1K€) <span class="check"></span></div>
+        <div class="qcm-opt" data-val="1-10k"><span class="emoji">📈</span> 1 – 10K€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="10-50k"><span class="emoji">🚀</span> 10 – 50K€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="50-100k"><span class="emoji">💼</span> 50 – 100K€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="100k+"><span class="emoji">👑</span> 100K€+ <span class="check"></span></div>
       </div>
-      <a class="modal-cta" id="waCta" href="#" target="_blank" rel="noopener" disabled>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.304-1.654a11.882 11.882 0 005.687 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        WhatsApp
-      </a>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next" data-next disabled>Suivant →</button>
+      </div>
+    </div>
+
+    <!-- STEP 5 : Déjà en ads ? (Y/N) -->
+    <div class="m-step" data-step="5" style="display:none">
+      <span class="m-giant">05</span>
+      <div class="m-kicker">◆ 05 / Paid media</div>
+      <h3 class="m-title">Tu fais déjà <em>de la pub</em> en ligne ?</h3>
+      <p class="m-desc">Meta, TikTok, Google, peu importe la plateforme.</p>
+      <div class="yn-grid" data-field="ads_running" data-mode="yn">
+        <button class="yn yes" type="button" data-val="yes">
+          <span class="yn-big">OUI</span>
+          <span class="yn-sm">Je scale déjà</span>
+        </button>
+        <button class="yn no" type="button" data-val="no">
+          <span class="yn-big">NON</span>
+          <span class="yn-sm">Pas encore</span>
+        </button>
+      </div>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+      </div>
+    </div>
+
+    <!-- STEP 6 : Budget mensuel -->
+    <div class="m-step" data-step="6" style="display:none">
+      <span class="m-giant">06</span>
+      <div class="m-kicker">◆ 06 / Ton budget</div>
+      <h3 class="m-title">Budget <em>ads mensuel</em> ?</h3>
+      <p class="m-desc">Ce que tu dépenses (ou comptes dépenser) en média paid / mois.</p>
+      <div class="qcm" data-field="budget" data-mode="single">
+        <div class="qcm-opt" data-val="0-500"><span class="emoji">🪙</span> Moins de 500€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="500-2k"><span class="emoji">💶</span> 500 – 2K€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="2-5k"><span class="emoji">💵</span> 2 – 5K€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="5-10k"><span class="emoji">💰</span> 5 – 10K€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="10k+"><span class="emoji">🏦</span> 10K€+ <span class="check"></span></div>
+      </div>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next" data-next disabled>Suivant →</button>
+      </div>
+    </div>
+
+    <!-- STEP 7 : Plateformes (multi) -->
+    <div class="m-step" data-step="7" style="display:none">
+      <span class="m-giant">07</span>
+      <div class="m-kicker">◆ 07 / Canaux</div>
+      <h3 class="m-title">Tu veux scaler <em>où</em> ?</h3>
+      <p class="m-desc">Choix multiple. Sélectionne tout ce qui t'intéresse.</p>
+      <div class="qcm cols-2" data-field="platforms" data-mode="multi">
+        <div class="qcm-opt" data-val="meta"><span class="emoji">🅕</span> Meta <span class="check"></span></div>
+        <div class="qcm-opt" data-val="tiktok"><span class="emoji">🎵</span> TikTok <span class="check"></span></div>
+        <div class="qcm-opt" data-val="google"><span class="emoji">🔍</span> Google <span class="check"></span></div>
+        <div class="qcm-opt" data-val="snap"><span class="emoji">👻</span> Snap <span class="check"></span></div>
+        <div class="qcm-opt" data-val="x"><span class="emoji">✖</span> X (Twitter) <span class="check"></span></div>
+        <div class="qcm-opt" data-val="pinterest"><span class="emoji">📌</span> Pinterest <span class="check"></span></div>
+      </div>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next" data-next disabled>Suivant →</button>
+      </div>
+    </div>
+
+    <!-- STEP 8 : Challenge -->
+    <div class="m-step" data-step="8" style="display:none">
+      <span class="m-giant">08</span>
+      <div class="m-kicker">◆ 08 / Ton blocage</div>
+      <h3 class="m-title">Ton <em>plus gros frein</em> aujourd'hui ?</h3>
+      <p class="m-desc">Là où ça fait mal. On s'en sert pour prioriser ton pack.</p>
+      <div class="qcm" data-field="challenge" data-mode="single">
+        <div class="qcm-opt" data-val="cpa"><span class="emoji">🔥</span> CPA trop haut <span class="check"></span></div>
+        <div class="qcm-opt" data-val="roas"><span class="emoji">📉</span> ROAS faible / pas rentable <span class="check"></span></div>
+        <div class="qcm-opt" data-val="creas"><span class="emoji">🎞️</span> Mes créas s'essoufflent vite <span class="check"></span></div>
+        <div class="qcm-opt" data-val="bandwidth"><span class="emoji">⏰</span> Pas le temps / pas d'équipe produit <span class="check"></span></div>
+        <div class="qcm-opt" data-val="scale"><span class="emoji">🧱</span> Scaling bloqué (plafond de verre) <span class="check"></span></div>
+        <div class="qcm-opt" data-val="start"><span class="emoji">🚦</span> Je démarre, j'ai besoin d'assets <span class="check"></span></div>
+      </div>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next" data-next disabled>Suivant →</button>
+      </div>
+    </div>
+
+    <!-- STEP 9 : Pack -->
+    <div class="m-step" data-step="9" style="display:none">
+      <span class="m-giant">09</span>
+      <div class="m-kicker">◆ 09 / Le pack</div>
+      <h3 class="m-title">Quel pack <em>t'intéresse</em> ?</h3>
+      <p class="m-desc">Tu peux aussi nous dire "je sais pas" — on te guide.</p>
+      <div class="qcm" data-field="pack" data-mode="single">
+        <div class="qcm-opt" data-val="launch"><span class="emoji">🎁</span> Pack de lancement · 150€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="starter"><span class="emoji">🥉</span> Starter · 199€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="pro"><span class="emoji">🥈</span> Pro · 299€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="scale"><span class="emoji">🥇</span> Scale · 499€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="custom"><span class="emoji">🛠️</span> Sur-mesure <span class="check"></span></div>
+        <div class="qcm-opt" data-val="unsure"><span class="emoji">🤷</span> Je sais pas encore <span class="check"></span></div>
+      </div>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next" data-next disabled>Suivant →</button>
+      </div>
+    </div>
+
+    <!-- STEP 10 : Urgence -->
+    <div class="m-step" data-step="10" style="display:none">
+      <span class="m-giant">10</span>
+      <div class="m-kicker">◆ 10 / Timing</div>
+      <h3 class="m-title">Tu veux <em>démarrer quand</em> ?</h3>
+      <p class="m-desc">Honnêtement. Nous aussi on a des places limitées.</p>
+      <div class="qcm" data-field="timing" data-mode="single">
+        <div class="qcm-opt" data-val="now"><span class="emoji">⚡</span> Cette semaine, j'attends plus <span class="check"></span></div>
+        <div class="qcm-opt" data-val="month"><span class="emoji">📅</span> Dans le mois <span class="check"></span></div>
+        <div class="qcm-opt" data-val="q"><span class="emoji">🗓️</span> Dans 1 – 3 mois <span class="check"></span></div>
+        <div class="qcm-opt" data-val="explore"><span class="emoji">🔭</span> Je regarde, je compare <span class="check"></span></div>
+      </div>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next" data-next disabled>Suivant →</button>
+      </div>
+    </div>
+
+    <!-- STEP 11 : Contact -->
+    <div class="m-step" data-step="11" style="display:none">
+      <span class="m-giant">11</span>
+      <div class="m-kicker">◆ 11 / Ton contact</div>
+      <h3 class="m-title">On te <em>répond où</em> ?</h3>
+      <p class="m-desc">Le WhatsApp c'est le plus rapide — on confirme sous 24h.</p>
+      <div class="contact-grid">
+        <div class="row2">
+          <div class="inp-wrap">
+            <label>Prénom <span class="req">*</span></label>
+            <input type="text" class="inp" data-field="first_name" placeholder="Jorys" autocomplete="given-name" maxlength="60"/>
+          </div>
+          <div class="inp-wrap">
+            <label>Marque / société</label>
+            <input type="text" class="inp" data-field="brand" placeholder="Ta marque (optionnel)" autocomplete="organization" maxlength="80"/>
+          </div>
+        </div>
+        <div class="inp-wrap">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" class="inp" data-field="email" placeholder="toi@tamarque.com" autocomplete="email" inputmode="email"/>
+        </div>
+        <div class="inp-wrap">
+          <label>WhatsApp <span class="req">*</span></label>
+          <input type="tel" class="inp" data-field="whatsapp" placeholder="+33 6 12 34 56 78" autocomplete="tel" inputmode="tel"/>
+        </div>
+      </div>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next" data-next disabled>Suivant →</button>
+      </div>
+    </div>
+
+    <!-- STEP 12 : Message libre + submit -->
+    <div class="m-step" data-step="12" style="display:none">
+      <span class="m-giant">12</span>
+      <div class="m-kicker">◆ 12 / Dernière étape</div>
+      <h3 class="m-title">Un truc à <em>ajouter</em> ?</h3>
+      <p class="m-desc">Optionnel. Contexte, deadline, brief, référence, peu importe.</p>
+      <div class="inp-wrap">
+        <label>Message (optionnel)</label>
+        <textarea class="txt" data-field="message" placeholder="Ex. J'ai déjà 5 créas mais elles fatiguent. J'ai un launch produit prévu le 15 mai, j'aurais besoin..." maxlength="800"></textarea>
+      </div>
+      <div class="err-note" id="onbErr"></div>
+      <div class="m-nav">
+        <button class="m-back" data-back>← Retour</button>
+        <button class="btn-next pop" id="onbSubmit">Envoyer le formulaire <span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+
+    <!-- STEP 13 : SUCCESS -->
+    <div class="m-step" data-step="success" style="display:none;padding:0">
+      <div class="success-wrap">
+        <div class="success-check">✓</div>
+        <h3>Formulaire <em>bien envoyé.</em></h3>
+        <p class="sub">Merci <span id="successName">!</span> — On a tout ce qu'il faut pour préparer ton pack.</p>
+        <div class="success-next">
+          <div class="ln"><span><b>Réponse sous 24h</b> — par WhatsApp en priorité, email en backup.</span></div>
+          <div class="ln"><span>Jorys (fondateur) <b>révise ton brief à la main</b> avant de te revenir.</span></div>
+          <div class="ln"><span>En attendant, tu peux <b>nous envoyer ton site / tes créas</b> sur WhatsApp.</span></div>
+        </div>
+        <div class="m-nav" style="justify-content:center;gap:14px;border-top:none;padding-top:6px;margin-top:6px">
+          <a class="btn-next lime" id="successWA" href="#" target="_blank" rel="noopener">Ouvrir WhatsApp →</a>
+          <button class="m-back" id="successClose">Fermer</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -2008,57 +2421,135 @@
     setInterval(tick, 1000);
   })();
 
-  /* ───── Packs config ───── */
-  const PACKS = {
-    launch:  { label: 'Pack de lancement (promo)', price: 150, regular: 199 },
-    starter: { label: 'Pack Starter',              price: 199 },
-    pro:     { label: 'Pack Pro',                  price: 299 },
-    scale:   { label: 'Pack Scale',                price: 499 },
-  };
-
-  const DISCOUNT_RATE = 0.20;           // CLUB100 → -20%
+  /* ───── Config globale ───── */
   const WA_NUMBER = "33642852291";
 
-  let selectedPack = 'launch';
-  let selectedSource = null;
-  let codeApplied = false;
+  const PACK_LABELS = {
+    launch:  'Pack de lancement · 150€',
+    starter: 'Starter · 199€',
+    pro:     'Pro · 299€',
+    scale:   'Scale · 499€',
+    custom:  'Sur-mesure',
+    unsure:  'Pas encore décidé'
+  };
 
-  const modal = document.getElementById('modal');
-  const closeBtn = document.getElementById('closeModal');
-  const opts = document.querySelectorAll('.opt');
-  const steps = document.querySelectorAll('.m-step');
-  const codeInput = document.getElementById('codeInput');
-  const applyCode = document.getElementById('applyCode');
-  const codeFb = document.getElementById('codeFeedback');
-  const totalEl = document.getElementById('total');
-  const wasEl = document.getElementById('was');
-  const waCta = document.getElementById('waCta');
-  const ynYes = document.getElementById('ynYes');
-  const ynNo = document.getElementById('ynNo');
-  const backTo1 = document.getElementById('backTo1');
-  const backTo2 = document.getElementById('backTo2');
+  /* ───── Telegram (notification bot) ─────
+     ⚠️ Le token est exposé côté client — n'importe qui peut l'extraire.
+     Pour la prod, déploie un Cloudflare Worker (voir worker.js dans le repo)
+     et remplis TELEGRAM_ENDPOINT ci-dessous. Laisse vide pour appel direct.
+  */
+  const TELEGRAM_ENDPOINT = ""; // ex: "https://hookd-notify.ton-compte.workers.dev"
+  const TELEGRAM_BOT_TOKEN = "8702556193:AAGMt2iZWxoyjArFfL95BSHSkrPMxzPo5mc";
+  const TELEGRAM_CHAT_ID   = "YOUR_CHAT_ID"; // ← remplace par ton chat_id (voir instructions)
 
-  // tous les boutons pack
+  /* ───── Onboarding : state ───── */
+  const QUESTION_STEPS = [1,2,3,4,5,6,7,8,9,10,11,12];
+  const TOTAL_Q = QUESTION_STEPS.length;
+
+  const formState = {
+    business: null,
+    product: '',
+    url: '',
+    revenue: null,
+    ads_running: null,
+    budget: null,
+    platforms: [],
+    challenge: null,
+    pack: null,
+    timing: null,
+    first_name: '',
+    brand: '',
+    email: '',
+    whatsapp: '',
+    message: ''
+  };
+
+  const LABELS = {
+    business: { ecommerce:'E-commerce / DTC', saas:'SaaS / App', services:'Services / Agence', info:'Info-produit', autre:'Autre' },
+    revenue:  { '0-1k':'< 1K€', '1-10k':'1–10K€', '10-50k':'10–50K€', '50-100k':'50–100K€', '100k+':'100K€+' },
+    ads_running: { yes:'Oui', no:'Non' },
+    budget:   { '0-500':'< 500€', '500-2k':'500–2K€', '2-5k':'2–5K€', '5-10k':'5–10K€', '10k+':'10K€+' },
+    platforms:{ meta:'Meta', tiktok:'TikTok', google:'Google', snap:'Snap', x:'X', pinterest:'Pinterest' },
+    challenge:{ cpa:'CPA trop haut', roas:'ROAS faible', creas:'Créas fatiguent', bandwidth:'Pas le temps', scale:'Scaling bloqué', start:'Démarre de zéro' },
+    pack:     PACK_LABELS,
+    timing:   { now:'Cette semaine', month:'Dans le mois', q:'Dans 1–3 mois', explore:'Exploratoire' }
+  };
+
+  const modal   = document.getElementById('modal');
+  const closeBtn= document.getElementById('closeModal');
+  const mHead   = document.getElementById('mHead');
+  const mBar    = document.getElementById('mBarFill');
+  const mCountNow = document.getElementById('mCountNow');
+  const mCountTot = document.getElementById('mCountTot');
+  const onbErr  = document.getElementById('onbErr');
   const packBtns = document.querySelectorAll('[data-pack]');
 
-  function packPrice(){ return PACKS[selectedPack].price; }
-  function packDiscounted(){ return Math.round(packPrice() * (1 - DISCOUNT_RATE)); }
+  let currentStep = 'welcome';
+  const stepHistory = [];
+  mCountTot.textContent = TOTAL_Q;
 
-  function openModal(pack){
-    if(pack && PACKS[pack]) selectedPack = pack;
-    codeApplied = false;
-    codeInput.value = '';
-    codeFb.textContent = '';
-    codeFb.className = 'code-feedback';
-    updateTotal();
-    refreshCta();
-    goStep(1);
-    modal.classList.add('open');
-    document.body.style.overflow='hidden';
+  function getStepEl(s){ return modal.querySelector('.m-step[data-step="'+s+'"]'); }
+
+  function goStep(s, push=true){
+    const next = getStepEl(s);
+    if(!next) return;
+    modal.querySelectorAll('.m-step').forEach(el => el.style.display='none');
+    next.style.display = 'block';
+
+    // progress bar visible seulement sur questions
+    const isQ = typeof s === 'number' || (!isNaN(parseInt(s,10)));
+    if(isQ){
+      mHead.style.display = 'flex';
+      const idx = QUESTION_STEPS.indexOf(parseInt(s,10)) + 1;
+      mCountNow.textContent = idx;
+      mBar.style.width = ((idx / TOTAL_Q) * 100) + '%';
+    } else {
+      mHead.style.display = 'none';
+    }
+
+    if(push && currentStep !== s) stepHistory.push(currentStep);
+    currentStep = s;
+    onbErr.textContent = '';
+
+    // focus auto sur premier input
+    setTimeout(() => {
+      const f = next.querySelector('input[type="text"], input[type="email"], input[type="tel"], textarea');
+      if(f && !isMobile()) f.focus();
+    }, 80);
   }
-  function closeModal(){ modal.classList.remove('open'); document.body.style.overflow=''; }
-  function goStep(n){
-    steps.forEach(s => { s.style.display = (parseInt(s.dataset.step,10) === n) ? 'block' : 'none'; });
+
+  function goBack(){
+    const prev = stepHistory.pop();
+    if(prev !== undefined) goStep(prev, false);
+  }
+
+  function isMobile(){ return window.matchMedia('(max-width: 720px)').matches; }
+
+  function openModal(prefillPack){
+    stepHistory.length = 0;
+    currentStep = 'welcome';
+    // pré-sélectionne un pack si l'utilisateur vient d'un bouton pack
+    if(prefillPack && PACK_LABELS[prefillPack]){
+      formState.pack = prefillPack;
+      // on marque visuellement la QCM du pack
+      const qcmPack = modal.querySelector('.qcm[data-field="pack"]');
+      if(qcmPack){
+        qcmPack.querySelectorAll('.qcm-opt').forEach(o => {
+          o.classList.toggle('active', o.dataset.val === prefillPack);
+        });
+      }
+      // débloque le bouton suivant sur step 9 si user arrive dessus
+      const s9 = getStepEl(9);
+      if(s9){ const nx = s9.querySelector('[data-next]'); if(nx) nx.disabled = false; }
+    }
+    goStep('welcome', false);
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
   }
 
   packBtns.forEach(btn => {
@@ -2066,86 +2557,257 @@
   });
   closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
-
-  function updateTotal(){
-    const base = packPrice();
-    if(codeApplied){
-      totalEl.textContent = packDiscounted() + '€';
-      wasEl.textContent = base + '€';
-      wasEl.style.display = 'inline';
-    } else {
-      totalEl.textContent = base + '€';
-      wasEl.style.display = 'none';
-    }
-  }
-
-  function refreshCta(){
-    if(selectedSource){
-      waCta.removeAttribute('disabled');
-      const price = codeApplied ? packDiscounted() : packPrice();
-      const src = {discord:'Discord', twitter:'X / Twitter', bao:'bouche à oreille', google:'Google'}[selectedSource] || selectedSource;
-      const codeTxt = codeApplied ? ' avec le code CLUB100 (-20%)' : '';
-      const packLabel = PACKS[selectedPack].label;
-      const msg = encodeURIComponent(
-        `Hello, je veux prendre le ${packLabel} (${price}€)${codeTxt}. Je vous ai connu via ${src}.`
-      );
-      waCta.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
-    } else {
-      waCta.setAttribute('disabled','');
-      waCta.href = '#';
-    }
-  }
-
-  // STEP 1 : pick source → STEP 2
-  opts.forEach(o => {
-    o.addEventListener('click', () => {
-      opts.forEach(x => x.classList.remove('active'));
-      o.classList.add('active');
-      selectedSource = o.dataset.src;
-      refreshCta();
-      setTimeout(() => goStep(2), 220);
-    });
-  });
-
-  // STEP 2 : yes / no promo code
-  ynYes.addEventListener('click', () => goStep(3));
-  ynNo.addEventListener('click', () => {
-    codeApplied = false;
-    codeInput.value = '';
-    codeFb.textContent = '';
-    codeFb.className = 'code-feedback';
-    updateTotal();
-    refreshCta();
-    closeModal();
-    // ouvre WhatsApp directement
-    if(waCta.href && waCta.href !== '#') window.open(waCta.href, '_blank', 'noopener');
-  });
-  backTo1.addEventListener('click', () => goStep(1));
-  backTo2.addEventListener('click', () => goStep(2));
-
-  // STEP 3 : apply code
-  applyCode.addEventListener('click', () => {
-    const v = codeInput.value.trim().toUpperCase();
-    if(v === 'CLUB100'){
-      codeApplied = true;
-      codeFb.textContent = '✓ Code appliqué — 20% de réduction';
-      codeFb.className = 'code-feedback ok';
-    } else {
-      codeApplied = false;
-      codeFb.textContent = '✗ Code invalide';
-      codeFb.className = 'code-feedback ko';
-    }
-    updateTotal();
-    refreshCta();
-  });
-
-  codeInput.addEventListener('keydown', e => {
-    if(e.key === 'Enter'){ e.preventDefault(); applyCode.click(); }
-  });
-
   document.addEventListener('keydown', e => {
     if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
   });
+
+  // Welcome → step 1
+  document.getElementById('onbStart').addEventListener('click', () => goStep(1));
+
+  // Back buttons
+  modal.querySelectorAll('[data-back]').forEach(b => {
+    b.addEventListener('click', goBack);
+  });
+
+  /* ─── QCM : single, multi, yn ─── */
+  modal.querySelectorAll('.qcm').forEach(qcm => {
+    const field = qcm.dataset.field;
+    const mode  = qcm.dataset.mode;
+    qcm.querySelectorAll('.qcm-opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const val = opt.dataset.val;
+        if(mode === 'multi'){
+          opt.classList.toggle('active');
+          const arr = Array.from(qcm.querySelectorAll('.qcm-opt.active')).map(o => o.dataset.val);
+          formState[field] = arr;
+          setNextEnabled(qcm.closest('.m-step'), arr.length > 0);
+        } else {
+          qcm.querySelectorAll('.qcm-opt').forEach(o => o.classList.remove('active'));
+          opt.classList.add('active');
+          formState[field] = val;
+          setNextEnabled(qcm.closest('.m-step'), true);
+        }
+      });
+    });
+  });
+
+  /* ─── Y/N buttons (step 5) ─── */
+  modal.querySelectorAll('[data-field][data-mode="yn"]').forEach(grid => {
+    const field = grid.dataset.field;
+    grid.querySelectorAll('.yn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        formState[field] = btn.dataset.val;
+        // avance automatiquement : si oui → step 6, si non → step 8 (skip budget + plateformes)
+        if(field === 'ads_running'){
+          goStep(btn.dataset.val === 'yes' ? 6 : 8);
+        }
+      });
+    });
+  });
+
+  /* ─── Text / email / tel inputs ─── */
+  modal.querySelectorAll('.inp, .txt').forEach(inp => {
+    const field = inp.dataset.field;
+    inp.addEventListener('input', () => {
+      inp.classList.remove('err');
+      formState[field] = inp.value.trim();
+      validateStep(inp.closest('.m-step'));
+    });
+    inp.addEventListener('keydown', e => {
+      if(e.key === 'Enter' && inp.tagName !== 'TEXTAREA'){
+        e.preventDefault();
+        const step = inp.closest('.m-step');
+        const nextBtn = step.querySelector('[data-next]');
+        if(nextBtn && !nextBtn.disabled) nextBtn.click();
+      }
+    });
+  });
+
+  function setNextEnabled(stepEl, ok){
+    const nx = stepEl.querySelector('[data-next]');
+    if(nx) nx.disabled = !ok;
+  }
+
+  function validateStep(stepEl){
+    const s = stepEl.dataset.step;
+    let ok = true;
+    if(s === '2') ok = formState.product.length >= 3;
+    else if(s === '3') ok = isValidUrlLike(formState.url);
+    else if(s === '11'){
+      ok = formState.first_name.length >= 1
+        && isValidEmail(formState.email)
+        && isValidPhone(formState.whatsapp);
+    }
+    setNextEnabled(stepEl, ok);
+    return ok;
+  }
+
+  function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+  function isValidPhone(v){ return /^[+\d\s().-]{7,}$/.test(v); }
+  function isValidUrlLike(v){
+    if(!v || v.length < 4) return false;
+    return /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(\/.*)?$/i.test(v) || /^@[\w.]+$/.test(v);
+  }
+
+  /* ─── Flow : bouton Suivant pour chaque step ─── */
+  const FLOW_NEXT = {
+    '1':  2,
+    '2':  3,
+    '3':  4,
+    '4':  5,
+    // 5 (Y/N) gère lui-même
+    '6':  7,
+    '7':  8,
+    '8':  9,
+    '9':  10,
+    '10': 11,
+    '11': 12
+  };
+
+  modal.querySelectorAll('[data-next]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const stepEl = btn.closest('.m-step');
+      if(!validateStep(stepEl)){
+        // highlight empty
+        stepEl.querySelectorAll('.inp, .txt').forEach(i => {
+          if(!i.value.trim() || (i.type === 'email' && !isValidEmail(i.value.trim()))) i.classList.add('err');
+        });
+        return;
+      }
+      const s = stepEl.dataset.step;
+      const next = FLOW_NEXT[s];
+      if(next !== undefined) goStep(next);
+    });
+  });
+
+  /* ─── Soumission du formulaire ─── */
+  const submitBtn = document.getElementById('onbSubmit');
+
+  submitBtn.addEventListener('click', async () => {
+    // Validation finale
+    const missing = [];
+    if(!formState.business)       missing.push('type de business');
+    if(!formState.product)        missing.push('produit');
+    if(!formState.url)            missing.push('URL');
+    if(!formState.revenue)        missing.push('CA');
+    if(!formState.ads_running)    missing.push('ads en cours');
+    if(formState.ads_running === 'yes' && !formState.budget) missing.push('budget');
+    if(formState.ads_running === 'yes' && (!formState.platforms || !formState.platforms.length)) missing.push('plateformes');
+    if(!formState.challenge)      missing.push('blocage');
+    if(!formState.pack)           missing.push('pack');
+    if(!formState.timing)         missing.push('timing');
+    if(!formState.first_name || !isValidEmail(formState.email) || !isValidPhone(formState.whatsapp)){
+      missing.push('contact');
+    }
+    if(missing.length){
+      onbErr.textContent = '⚠ Il manque : ' + missing.join(', ');
+      return;
+    }
+
+    const originalLabel = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="sending"></span> Envoi en cours...';
+    onbErr.textContent = '';
+
+    try {
+      await sendToTelegram(formState);
+      // Success screen
+      document.getElementById('successName').textContent = formState.first_name ? (formState.first_name + ' !') : '!';
+      const waMsg = buildWhatsAppFallback(formState);
+      document.getElementById('successWA').href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waMsg);
+      goStep('success');
+    } catch(err){
+      console.error('Telegram submit failed', err);
+      onbErr.textContent = '⚠ Impossible d\'envoyer — ouvre WhatsApp, on prend le relais';
+      // Fallback : ouvre WhatsApp avec récap
+      const waMsg = buildWhatsAppFallback(formState);
+      setTimeout(() => {
+        window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waMsg), '_blank', 'noopener');
+      }, 800);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalLabel;
+    }
+  });
+
+  document.getElementById('successClose').addEventListener('click', closeModal);
+
+  /* ─── Format du message Telegram ─── */
+  function formatTelegramMessage(f){
+    const lbl = (map, v) => (v && map[v]) ? map[v] : (v || '—');
+    const platforms = (f.platforms && f.platforms.length)
+      ? f.platforms.map(p => LABELS.platforms[p] || p).join(', ')
+      : '—';
+    const now = new Date();
+    const dateStr = now.toLocaleString('fr-FR', { dateStyle:'short', timeStyle:'short' });
+    return [
+      '🔥 *Nouvelle demande hookd.*',
+      '_' + dateStr + '_',
+      '',
+      '👤 *Contact*',
+      '• Prénom : ' + (f.first_name || '—'),
+      '• Marque : ' + (f.brand || '—'),
+      '• Email : ' + (f.email || '—'),
+      '• WhatsApp : ' + (f.whatsapp || '—'),
+      '',
+      '🏢 *Business*',
+      '• Type : ' + lbl(LABELS.business, f.business),
+      '• Produit : ' + (f.product || '—'),
+      '• URL : ' + (f.url || '—'),
+      '• CA mensuel : ' + lbl(LABELS.revenue, f.revenue),
+      '',
+      '💸 *Paid media*',
+      '• Déjà en ads : ' + lbl(LABELS.ads_running, f.ads_running),
+      '• Budget : ' + lbl(LABELS.budget, f.budget),
+      '• Plateformes : ' + platforms,
+      '',
+      '🎯 *Projet*',
+      '• Blocage : ' + lbl(LABELS.challenge, f.challenge),
+      '• Pack voulu : ' + lbl(LABELS.pack, f.pack),
+      '• Timing : ' + lbl(LABELS.timing, f.timing),
+      '',
+      '💬 *Message*',
+      f.message ? f.message : '(aucun)'
+    ].join('\n');
+  }
+
+  function buildWhatsAppFallback(f){
+    const lines = [
+      "Hello, je viens de remplir le formulaire sur hookd.",
+      f.first_name ? ("Prénom : " + f.first_name) : null,
+      f.brand ? ("Marque : " + f.brand) : null,
+      f.pack ? ("Pack visé : " + (PACK_LABELS[f.pack] || f.pack)) : null,
+      f.timing ? ("Timing : " + (LABELS.timing[f.timing] || f.timing)) : null,
+      f.url ? ("Site : " + f.url) : null
+    ].filter(Boolean);
+    return lines.join('\n');
+  }
+
+  async function sendToTelegram(f){
+    const text = formatTelegramMessage(f);
+    // Priorité 1 : endpoint proxy (Cloudflare Worker / Vercel func)
+    if(TELEGRAM_ENDPOINT){
+      const r = await fetch(TELEGRAM_ENDPOINT, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ text, payload: f })
+      });
+      if(!r.ok) throw new Error('proxy ' + r.status);
+      return r.json().catch(() => ({}));
+    }
+    // Fallback : appel direct à l'API Telegram (token exposé côté client)
+    if(!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === 'YOUR_CHAT_ID'){
+      throw new Error('chat_id not configured');
+    }
+    const url = 'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage';
+    const r = await fetch(url, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode:'Markdown' })
+    });
+    if(!r.ok) throw new Error('telegram ' + r.status);
+    return r.json();
+  }
 
   /* ───── Pack sur-mesure builder (vidéos only + bonus progressifs) ───── */
   const PRICE_VIDEO = 50;
