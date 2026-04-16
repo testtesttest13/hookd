@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>hookd. — Pubs IA sur-mesure pour e‑commerçants</title>
+<title>hookd. · Pubs IA sur-mesure pour e‑commerçants</title>
 <meta name="description" content="Studio indépendant. Brief 1:1 avec le fondateur, créas IA 100% personnalisées à ta marque, livrées en 24h. Pack de lancement à 150€." />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='1.5' y='1.5' width='29' height='29' rx='6' fill='%23D4F24F' stroke='%230B0A08' stroke-width='3'/><text x='9' y='24' font-family='Georgia,Times,serif' font-size='22' font-style='italic' font-weight='400' fill='%230B0A08'>h</text><circle cx='22' cy='22.5' r='2.6' fill='%23FF5A32' stroke='%230B0A08' stroke-width='1'/></svg>" />
 <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%23D4F24F' stroke='%230B0A08' stroke-width='14'/><text x='48' y='132' font-family='Georgia,Times,serif' font-size='120' font-style='italic' font-weight='400' fill='%230B0A08'>h</text><circle cx='124' cy='128' r='15' fill='%23FF5A32' stroke='%230B0A08' stroke-width='6'/></svg>" />
@@ -86,6 +86,78 @@
   .nav-links{display:flex;gap:28px;font-size:14px;color:var(--label);font-weight:500}
   .nav-links a{position:relative;padding:4px 2px;transition:color .15s ease}
   .nav-links a:hover{color:var(--v)}
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .lang-btn{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:8px 12px;border-radius:999px;
+    background:var(--bg);color:var(--text);
+    border:1px solid var(--line);cursor:pointer;
+    font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.02em;
+    transition:border-color .15s ease, background .15s ease, color .15s ease;
+  }
+  .lang-btn:hover{border-color:var(--v);color:var(--v);background:var(--v-soft)}
+  .lang-btn svg{opacity:.7}
+  .lang-btn:hover svg{opacity:1}
+
+  /* ─── Language picker modal ─── */
+  .lang-backdrop{
+    position:fixed;inset:0;z-index:2000;
+    background:rgba(15,23,42,.5);backdrop-filter:blur(6px);
+    display:none;align-items:center;justify-content:center;padding:20px;
+    opacity:0;transition:opacity .2s ease;
+  }
+  .lang-backdrop.open{display:flex;opacity:1}
+  .lang-modal{
+    position:relative;
+    background:#FFFFFF;color:var(--text);
+    border-radius:24px;
+    box-shadow:0 24px 64px rgba(15,23,42,.2), 0 2px 8px rgba(15,23,42,.1);
+    max-width:460px;width:100%;
+    padding:36px 32px 32px;
+    transform:translateY(16px);
+    animation:langIn .25s ease forwards;
+    overflow:hidden;
+  }
+  @keyframes langIn{to{transform:translateY(0)}}
+  .lang-modal::before{
+    content:"";position:absolute;top:-100px;left:-100px;width:320px;height:320px;
+    background:radial-gradient(circle, rgba(124,58,237,.18), transparent 70%);
+    pointer-events:none;
+  }
+  .lang-close{
+    position:absolute;top:14px;right:14px;width:32px;height:32px;
+    background:var(--soft);border:none;border-radius:999px;cursor:pointer;
+    color:var(--text);font-size:20px;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .15s ease, color .15s ease;z-index:2;
+  }
+  .lang-close:hover{background:var(--v-soft);color:var(--v)}
+  .lang-header{position:relative;text-align:center;margin-bottom:22px;z-index:1}
+  .lang-kicker{
+    display:inline-block;padding:6px 14px;border-radius:999px;
+    background:var(--v-soft);color:var(--v);border:1px solid var(--v-border);
+    font-size:12.5px;font-weight:600;margin-bottom:16px;
+  }
+  .lang-title{
+    font-family:inherit;font-weight:800;
+    font-size:28px;letter-spacing:-0.03em;line-height:1.1;
+    margin:0 0 10px;color:var(--text);
+  }
+  .lang-title em{font-style:italic;color:var(--v);font-weight:800}
+  .lang-sub{font-family:inherit;font-size:14px;color:var(--muted);margin:0;line-height:1.5}
+  .lang-grid{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+  .lang-opt{
+    display:flex;align-items:center;gap:14px;
+    padding:14px 18px;border-radius:14px;
+    background:var(--bg);border:1px solid var(--line);cursor:pointer;
+    font-family:inherit;text-align:left;
+    transition:border-color .15s ease, background .15s ease, transform .15s ease, box-shadow .15s ease;
+  }
+  .lang-opt:hover{border-color:var(--v);background:var(--v-soft);box-shadow:0 4px 16px rgba(124,58,237,.12);transform:translateY(-1px)}
+  .lang-flag{font-size:24px;line-height:1}
+  .lang-name{flex:1;font-size:16px;font-weight:700;color:var(--text)}
+  .lang-meta{font-size:12px;color:var(--muted);font-weight:500}
+
   .nav-cta{
     display:inline-flex;align-items:center;gap:8px;
     background:var(--v);color:#fff;
@@ -122,63 +194,115 @@
 
   /* ─────────── HERO ─────────── */
   .hero{
-    padding:64px 0 96px;
+    padding:72px 0 96px;
     position:relative;
     overflow:hidden;
   }
   .hero::before{
     content:"";
     position:absolute;
-    top:-10%;left:30%;width:80%;height:120%;
-    background:radial-gradient(50% 50% at 50% 50%, rgba(124,58,237,.22), transparent 70%);
+    top:20%;left:50%;transform:translateX(-50%);
+    width:900px;height:900px;
+    background:radial-gradient(50% 50% at 50% 50%, rgba(124,58,237,.28), transparent 70%);
     pointer-events:none;z-index:0;
-    filter:blur(8px);
+    filter:blur(20px);
   }
   .hero::after{
     content:"hookd.";
-    position:absolute;bottom:-80px;left:-40px;
+    position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);
     font-family:inherit;font-weight:800;font-style:italic;
-    font-size:clamp(220px,28vw,440px);line-height:.82;letter-spacing:-0.06em;
-    color:var(--v-soft);opacity:.9;
+    font-size:clamp(180px,22vw,320px);line-height:.82;letter-spacing:-0.06em;
+    color:var(--v-soft);opacity:.7;
     pointer-events:none;user-select:none;z-index:0;
     white-space:nowrap;
   }
-  .top-strip{
-    display:flex;justify-content:space-between;align-items:center;
-    padding-bottom:0;border-bottom:none;
-    margin-bottom:36px;gap:20px;flex-wrap:wrap;
-    font-family:inherit;font-size:12.5px;
-    color:var(--muted);letter-spacing:0;text-transform:none;font-weight:500;
+  .hero-wrap{
+    position:relative;z-index:3;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    gap:24px;
   }
-
-  .hero-grid{
-    display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:center;
-  }
-  .hero-left{display:flex;flex-direction:column;gap:22px}
-  .hero-left .sub{max-width:46ch;margin:0}
-  .hero-left .hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-
-  .hero-trust{
+  .hero-pill{
     display:inline-flex;align-items:center;gap:10px;
-    background:var(--v-soft);color:var(--v);
-    border:1px solid var(--v-border);
-    padding:7px 14px;border-radius:999px;
-    box-shadow:none;
-    font-family:inherit;
-    font-size:12.5px;font-weight:600;letter-spacing:0;text-transform:none;
-    width:fit-content;
-    transform:none;
+    background:var(--bg);
+    border:1px solid var(--line);
+    padding:6px 6px 6px 6px;border-radius:999px;
+    font-family:inherit;font-size:13px;font-weight:500;
+    color:var(--text);text-decoration:none;
+    box-shadow:0 1px 2px rgba(15,23,42,.04);
+    transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
   }
-  .hero-trust strong{
-    font-family:inherit;font-weight:700;
-    font-size:12.5px;letter-spacing:0;
-    background:transparent;color:var(--v);
-    padding:0;border-radius:0;text-transform:none;
+  .hero-pill:hover{border-color:var(--v);box-shadow:0 4px 16px rgba(124,58,237,.18)}
+  .hero-pill-tag{
+    display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;
+    background:var(--v);color:#fff;
+    font-size:10.5px;font-weight:700;letter-spacing:.04em;
   }
-  .hero-trust .trust-dot{
-    width:7px;height:7px;border-radius:50%;background:var(--v);
-    box-shadow:0 0 0 3px rgba(124,58,237,.18);
-    animation:blink 1.6s ease-in-out infinite;
+  .hero-pill svg{color:var(--muted);transition:color .15s ease, transform .15s ease}
+  .hero-pill:hover svg{color:var(--v);transform:translate(2px,-2px)}
+  .hero-pill > span:not(.hero-pill-tag){padding-right:4px}
+
+  .hero-sub{
+    max-width:58ch;margin:0 auto;
+    font-size:18px;line-height:1.55;
+    color:var(--label);
+  }
+  .hero-sub strong{color:var(--text);font-weight:600}
+  .hero-cta{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:8px}
+  .btn-lg{padding:16px 26px;font-size:15.5px;border-radius:999px}
+
+  .hero-rating{
+    display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;
+    margin-top:8px;
+    font-family:inherit;font-size:13.5px;color:var(--muted);font-weight:500;
+  }
+  .hr-stars{color:#FBBF24;letter-spacing:.05em;font-size:14px}
+  .hr-score{color:var(--text);font-weight:500}
+  .hr-score b{font-weight:700}
+  .hr-sep{width:4px;height:4px;border-radius:50%;background:var(--line-strong)}
+  .hr-lbl b{color:var(--text);font-weight:700}
+
+  /* ─── Pins décoratifs flottants hero ─── */
+  .pin{
+    position:absolute;z-index:2;
+    display:inline-flex;align-items:center;gap:10px;
+    padding:10px 14px 10px 10px;border-radius:999px;
+    background:var(--bg);border:1px solid var(--line);
+    box-shadow:0 4px 16px rgba(15,23,42,.08);
+    font-family:inherit;font-size:12.5px;color:var(--text);
+    pointer-events:none;user-select:none;
+    animation:pinFloat 6s ease-in-out infinite;
+  }
+  .pin svg{width:30px;height:30px;flex-shrink:0;border-radius:50%}
+  .pin-ic{
+    width:30px;height:30px;border-radius:50%;background:var(--v-soft);
+    display:flex;align-items:center;justify-content:center;font-size:16px;
+  }
+  .pin-dot{
+    width:10px;height:10px;border-radius:50%;
+    background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.2);
+    animation:blink 1.6s ease-in-out infinite;margin-left:8px;
+  }
+  .pin-txt{display:flex;flex-direction:column;gap:1px;line-height:1.2;padding-right:6px}
+  .pin-txt b{font-weight:700;font-size:13px;color:var(--text)}
+  .pin-txt span{font-size:10.5px;color:var(--muted);font-weight:500}
+  .pin-meta{top:90px;left:6%;animation-delay:-1s;transform:rotate(-3deg)}
+  .pin-tiktok{top:30%;right:6%;animation-delay:-2.5s;transform:rotate(4deg)}
+  .pin-roas{bottom:28%;left:4%;animation-delay:-1.5s;transform:rotate(2deg)}
+  .pin-live{bottom:20%;right:5%;animation-delay:-3s;transform:rotate(-2deg)}
+  @keyframes pinFloat{
+    0%,100%{translate:0 0}
+    50%{translate:0 -6px}
+  }
+  @media (max-width:1100px){
+    .pin{font-size:11px;padding:7px 12px 7px 7px}
+    .pin svg, .pin-ic{width:24px;height:24px;font-size:13px}
+    .pin-txt b{font-size:11.5px}
+    .pin-txt span{font-size:9.5px}
+  }
+  @media (max-width:720px){
+    .pin-meta, .pin-tiktok{display:none}
+    .pin-roas{bottom:auto;top:12%;left:2%}
+    .pin-live{bottom:auto;top:12%;right:2%}
   }
 
   /* Bandeau stats en bas du hero */
@@ -217,75 +341,29 @@
 
   h1.headline{
     font-family:inherit;
-    font-size:clamp(56px,8.8vw,128px);
-    line-height:.95;
-    letter-spacing:-0.05em;
+    font-size:clamp(52px,9.2vw,136px);
+    line-height:.92;
+    letter-spacing:-0.055em;
     margin:0;font-weight:800;
     color:var(--text);
+    max-width:18ch;
   }
-  h1.headline .serif-em{
+  h1.headline em, h1.headline .serif-em{
     font-family:inherit;
     font-style:italic;font-weight:800;
     color:var(--v);
     position:relative;display:inline;
     padding:0;
     background:transparent;
-    letter-spacing:-0.055em;
+    letter-spacing:-0.06em;
   }
   h1.headline .serif-em::before{display:none}
 
-  /* ─── 3 creas éventail ─── */
-  .hero-creas{
-    position:relative;
-    width:100%;min-height:460px;
-    display:flex;align-items:center;justify-content:center;
-    padding:24px 0;
-  }
-  .hero-creas .fc{
-    position:relative;flex:0 0 auto;
-    width:200px;aspect-ratio:9/16;
-    background:var(--bg);
-    border:1px solid var(--line);
-    border-radius:18px;
-    box-shadow:var(--shadow);
-    transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;
-    margin:0 -18px;
-    overflow:hidden;
-  }
-  .hero-creas .fc .img-wrap{
-    position:relative;width:100%;height:100%;
-    border-radius:17px;overflow:hidden;
-  }
-  .hero-creas .fc img{width:100%;height:100%;object-fit:cover;display:block}
-  .hero-creas .fc.left{
-    transform:rotate(-5deg) translateY(12px);z-index:1;
-  }
-  .hero-creas .fc.center{
-    width:220px;
-    transform:translateY(-8px);z-index:3;
-    box-shadow:var(--shadow-lg);
-  }
-  .hero-creas .fc.right{
-    transform:rotate(5deg) translateY(12px);z-index:2;
-  }
-  .hero-creas:hover .fc.left{transform:rotate(-7deg) translate(-14px,6px)}
-  .hero-creas:hover .fc.center{transform:translateY(-14px)}
-  .hero-creas:hover .fc.right{transform:rotate(7deg) translate(14px,6px)}
-
-  /* tags sur chaque créa — masqués pour clean look */
-  .hero-creas .fc-tag, .hero-creas .fc-foot{display:none}
-
-  .hero-bottom{
-    display:grid;grid-template-columns:1fr 1fr;gap:60px;
-    margin-top:60px;padding-top:36px;border-top:1px solid var(--line);
-    align-items:end;
-  }
   .sub{
     font-size:17px;color:var(--label);
-    max-width:46ch;margin:0;line-height:1.6;font-weight:400;
+    margin:0;line-height:1.6;font-weight:400;
   }
   .sub strong{font-weight:600;color:var(--text);background:transparent;padding:0}
-  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-self:end}
 
   .btn{
     display:inline-flex;align-items:center;gap:8px;
@@ -572,15 +650,22 @@
   .price .num{font-family:inherit;font-size:64px;line-height:.9;letter-spacing:-0.035em;font-weight:700;color:var(--text)}
   .price .cur{font-family:inherit;font-size:24px;color:var(--muted);font-weight:700}
   .price .unit{color:var(--muted);font-size:13px;margin-left:10px;font-weight:500}
-  ul.feats{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:10px}
-  ul.feats li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--text);font-weight:400;line-height:1.5}
+  ul.feats{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:12px}
+  ul.feats li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--text);font-weight:400;line-height:1.4}
   ul.feats li .check{
-    flex:0 0 auto;width:20px;height:20px;border-radius:999px;
+    flex:0 0 auto;width:18px;height:18px;border-radius:999px;
     background:var(--v-soft);color:var(--v);
     display:flex;align-items:center;justify-content:center;
-    border:none;margin-top:1px;
+    border:none;margin-top:2px;position:relative;
+  }
+  ul.feats li .check::after{
+    content:"";
+    width:8px;height:4px;
+    border-left:1.8px solid currentColor;border-bottom:1.8px solid currentColor;
+    transform:translateY(-1px) rotate(-45deg);
   }
   ul.feats li strong{font-weight:600;color:var(--text)}
+  ul.feats li .feat-muted{color:var(--muted);font-weight:400}
   .btn-offer{
     width:100%;justify-content:center;padding:14px 24px;font-size:15px;font-weight:600;
     background:var(--v);color:#fff;border:none;
@@ -642,13 +727,24 @@
   .tier{
     position:relative;
     background:var(--bg);color:var(--text);
-    border:1px solid var(--line);border-radius:20px;
-    padding:32px 28px;
+    border:1px solid var(--line);border-radius:24px;
+    padding:36px 32px 32px;
     box-shadow:var(--shadow-sm);
-    display:flex;flex-direction:column;
+    display:flex;flex-direction:column;gap:18px;
     transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
   .tier:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--v-border)}
+  .tier-top{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+  .tier-unit{
+    font-family:inherit;font-size:11.5px;font-weight:500;
+    color:var(--muted);margin-left:auto;padding-bottom:10px;
+    letter-spacing:.03em;
+  }
+  .tier.featured .tier-unit, .tier.dark .tier-unit{color:rgba(255,255,255,.5)}
+  .tier-divider{height:1px;background:var(--line);margin:0 -4px}
+  .tier.dark .tier-divider{background:rgba(255,255,255,.12)}
+  .tier.featured .tier-divider{background:rgba(255,255,255,.12)}
+  .tier.featured .tier-unit{color:rgba(196,181,253,.65)}
   .tier.featured{
     background:var(--bg);border-color:var(--v);
     box-shadow:0 4px 8px rgba(15,23,42,.06), 0 16px 48px rgba(124,58,237,.14);
@@ -667,46 +763,48 @@
     box-shadow:0 8px 20px rgba(124,58,237,.35);
     white-space:nowrap;
   }
-  .tier-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
   .tier-tag{
     font-family:inherit;
     font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;
     background:var(--v-soft);color:var(--v);
     border:1px solid var(--v-border);
-    padding:4px 10px;border-radius:999px;
+    padding:5px 12px;border-radius:999px;
   }
   .tier.dark .tier-tag{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.15)}
   .tier-sub{
     font-family:inherit;
-    font-size:12.5px;font-weight:500;letter-spacing:0;text-transform:none;
-    color:currentColor;opacity:.6;
+    font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;
+    color:var(--muted);margin:0;
   }
+  .tier.dark .tier-sub{color:rgba(255,255,255,.6)}
   .tier-price{
-    display:flex;align-items:baseline;gap:4px;margin:6px 0 6px;
-    font-family:inherit;font-weight:700;
+    display:flex;align-items:baseline;gap:6px;
+    font-family:inherit;font-weight:800;line-height:.9;
   }
-  .tier-price .num{font-size:56px;line-height:.9;letter-spacing:-0.035em}
-  .tier-price .cur{font-size:22px;opacity:.65}
+  .tier-price .num{font-size:72px;line-height:.9;letter-spacing:-0.05em;font-style:italic}
+  .tier-price .cur{font-size:26px;opacity:.55;font-weight:700;font-style:normal}
   .tier-for{
-    font-family:inherit;font-size:13px;
-    font-weight:500;opacity:.7;margin:0 0 22px;
-    padding-bottom:20px;border-bottom:1px solid currentColor;border-bottom-color:var(--line);
+    font-family:inherit;font-size:14px;
+    font-weight:400;color:var(--muted);margin:0;line-height:1.45;
   }
-  .tier.dark .tier-for{border-bottom-color:rgba(255,255,255,.12)}
-  .tier .feats{margin:0 0 26px;flex:1}
-  .tier .feats li{color:currentColor;opacity:1}
-  .tier.dark .feats li{color:rgba(255,255,255,.85)}
-  .tier.dark .feats li .check{background:rgba(255,255,255,.1);color:#fff}
+  .tier.dark .tier-for{color:rgba(255,255,255,.65)}
+  .tier .feats{margin:0;flex:1}
+  .tier .feats li{color:var(--text);opacity:1}
+  .tier.dark .feats li{color:rgba(255,255,255,.88)}
+  .tier.dark .feats li .check{background:rgba(196,181,253,.16);color:#C4B5FD}
+  .tier.dark .feats li strong{color:#fff}
+  .tier.dark .feats li .feat-muted{color:rgba(255,255,255,.5)}
+  .tier.featured .feats li .feat-muted{color:rgba(255,255,255,.5)}
   .tier-cta{
-    width:100%;justify-content:center;padding:13px 22px;
+    width:100%;justify-content:center;padding:14px 22px;
     background:var(--text);color:#fff;border:none;
     font-weight:600;box-shadow:0 1px 2px rgba(15,23,42,.08);
-    border-radius:10px;
+    border-radius:999px;margin-top:8px;
   }
   .tier-cta:hover{background:#1E293B;box-shadow:0 4px 16px rgba(15,23,42,.25)}
-  .tier.dark .tier-cta{background:#fff;color:var(--text)}
+  .tier.dark .tier-cta{background:#fff;color:var(--text);border-radius:999px}
   .tier.dark .tier-cta:hover{background:#F1F5F9}
-  .tier-cta.featured{background:var(--v);color:#fff}
+  .tier-cta.featured{background:var(--v);color:#fff;border-radius:999px}
   .tier-cta.featured:hover{background:var(--v-hover);box-shadow:0 4px 16px rgba(124,58,237,.3)}
   .tiers-foot{
     display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
@@ -814,7 +912,6 @@
     50%{opacity:.55;transform:scale(1.15)}
   }
 
-  .tier-price .num{font-size:64px}
   .tier.featured .tier-price{color:#fff}
   .tier.featured .tier-price .cur{color:#C4B5FD;opacity:1}
 
@@ -1097,11 +1194,13 @@
     overflow:hidden;
   }
   .modal.onb .m-close{
+    position:absolute;z-index:20;
     border:none;border-radius:999px;
     background:var(--s-soft);color:var(--s-text);
-    font-weight:500;font-size:18px;
-    top:14px;right:14px;width:32px;height:32px;
-    box-shadow:none;
+    font-weight:500;font-size:22px;line-height:1;
+    top:14px;right:14px;width:36px;height:36px;
+    box-shadow:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
     transition:background .15s ease, color .15s ease;
   }
   .modal.onb .m-close:hover{background:#EDE9FE;color:var(--v);transform:none;box-shadow:none}
@@ -1370,12 +1469,9 @@
   /* ─────────── RESPONSIVE ─────────── */
   @media (max-width: 1000px){
     .nav-links{display:none}
-    .hero-bottom{grid-template-columns:1fr;gap:32px}
-    .hero-cta{justify-self:start}
-    .hero-grid{grid-template-columns:1fr;gap:36px}
-    .hero-creas{min-height:400px;margin-top:16px}
-    .hero-creas .fc{width:150px}
-    .hero-creas .fc.center{width:170px}
+    .hero{padding:48px 0 72px}
+    .hero::after{font-size:120px;bottom:-20px}
+    .hero-rating{gap:10px;font-size:12.5px}
     .section-head{grid-template-columns:1fr;gap:20px;margin-bottom:40px}
     .crea-grid{grid-template-columns:1fr 1fr;gap:14px}
     .crea:nth-child(2){transform:none}
@@ -1409,90 +1505,97 @@
   <div class="wrap nav-row">
     <a href="#" class="hooked-mark">hoo<span class="k">k</span>d<span class="dot">.</span></a>
     <div class="nav-links">
-      <a href="#creas">Créas</a>
-      <a href="#perso">Approche</a>
-      <a href="#offre">Offre</a>
-      <a href="#affiliate">Affiliation</a>
+      <a href="#creas" data-i18n="nav.creas">Créas</a>
+      <a href="#perso" data-i18n="nav.approche">Approche</a>
+      <a href="#offre" data-i18n="nav.offre">Offre</a>
+      <a href="#affiliate" data-i18n="nav.affiliate">Affiliation</a>
       <a href="#faq">FAQ</a>
     </div>
-    <a href="#offre" class="nav-cta">
-      Lancer un pack
-      <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-    </a>
+    <div class="nav-right">
+      <button class="lang-btn" id="langBtn" aria-label="Changer de langue">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        <span id="langBtnCode">FR</span>
+      </button>
+      <a href="#offre" class="nav-cta">
+        <span data-i18n="nav.cta">Lancer un pack</span>
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+      </a>
+    </div>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="wrap" style="position:relative;z-index:3">
-    <div class="top-strip">
-      <span class="sticker"><span class="dot-live"></span> 3 places ouvertes · Avril 2026</span>
+  <!-- Pins décoratifs flottants -->
+  <div class="pin pin-meta" aria-hidden="true">
+    <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F2"/><path d="M17.5 22v-6h2l.3-2.4h-2.3v-1.5c0-.7.2-1.1 1.1-1.1h1.2V9a17 17 0 0 0-1.8-.1c-1.8 0-3 1-3 3v1.7H13V16h2v6h2.5z" fill="#fff"/></svg>
+    <div class="pin-txt"><b>Meta</b><span>Ads ready</span></div>
+  </div>
+  <div class="pin pin-tiktok" aria-hidden="true">
+    <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="16" fill="#000"/><path d="M22 13.8a6.5 6.5 0 0 1-3.8-1.2v5.9a5 5 0 1 1-4.3-5v2.5a2.5 2.5 0 1 0 1.8 2.5V7h2.5a3.9 3.9 0 0 0 3.8 3.8v3z" fill="#25F4EE"/><path d="M22.2 13.4a6.5 6.5 0 0 1-3.8-1.2v5.9a5 5 0 1 1-4.3-5v2.5a2.5 2.5 0 1 0 1.8 2.5V6.6h2.5a3.9 3.9 0 0 0 3.8 3.8v3z" fill="#fff"/></svg>
+    <div class="pin-txt"><b>TikTok</b><span>Formats verticaux</span></div>
+  </div>
+  <div class="pin pin-roas" aria-hidden="true">
+    <div class="pin-ic">📈</div>
+    <div class="pin-txt"><b>ROAS × 3.6</b><span>Moy. clients</span></div>
+  </div>
+  <div class="pin pin-live" aria-hidden="true">
+    <span class="pin-dot"></span>
+    <div class="pin-txt"><b>3 slots</b><span>Avril 2026</span></div>
+  </div>
+
+  <div class="wrap hero-wrap">
+    <a href="#offre" class="hero-pill">
+      <span class="hero-pill-tag">NEW</span>
+      <span data-i18n="hero.pill">3 places ouvertes pour avril 2026</span>
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+    </a>
+
+    <h1 class="headline" data-i18n-html="hero.title">
+      Des ads qui <em>vendent.</em><br>En 24h.
+    </h1>
+
+    <p class="sub hero-sub" data-i18n="hero.sub">
+      Vidéos UGC, Pixar et statiques pour e-commerçants. On écrit, on monte, on livre. Sans template, sans abonnement, en moins de 24h.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#offre" class="btn btn-pop btn-lg">
+        <span data-i18n="hero.cta1">Voir les packs</span>
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+      </a>
+      <a href="#creas" class="btn btn-ghost btn-lg">
+        <span data-i18n="hero.cta2">Voir les créas</span>
+      </a>
     </div>
 
-    <div class="hero-grid">
-      <div class="hero-left">
-        <span class="hero-trust">
-          <span class="trust-dot"></span>
-          <strong>+500K€</strong> générés avec nos ads
-        </span>
-        <h1 class="headline">
-          Des ads<br>qui <span class="serif-em">vendent.</span><br>En 24h.
-        </h1>
-        <p class="sub">
-          On écrit. On monte. On livre. <strong>3 hooks par vidéo</strong>, scripts optimisés conversion,
-          statiques en bonus. Zéro template.
-        </p>
-        <div class="hero-cta">
-          <a href="#offre" class="btn btn-pop">
-            Voir l'offre →
-          </a>
-          <a href="#creas" class="btn btn-ghost">Voir les créas</a>
-        </div>
-      </div>
-
-      <div class="hero-creas">
-        <span class="star-float">★ Ton prochain winner</span>
-
-        <div class="fc left">
-          <span class="fc-tag">÷ 2.8 CPA</span>
-          <div class="img-wrap"><img src="img/2d0cbbd2-ed97-4b9d-b6f4-cb863af99f2e.png" alt="Créa UGC — Graine de Lascars" /></div>
-          <span class="fc-foot">UGC · Meta</span>
-        </div>
-
-        <div class="fc center">
-          <span class="fc-tag">ROAS × 3.6</span>
-          <div class="img-wrap"><img src="img/1.png" alt="Créa Pixar IA — personnage cannabis réveil" /></div>
-          <span class="fc-foot">Pixar · Meta</span>
-        </div>
-
-        <div class="fc right">
-          <span class="fc-tag">CTR 4.2%</span>
-          <div class="img-wrap"><img src="img/static.png" alt="Créa statique — avant / après Graine de Lascars" /></div>
-          <span class="fc-foot">Static · Meta</span>
-        </div>
-      </div>
+    <div class="hero-rating">
+      <span class="hr-stars">★★★★★</span>
+      <span class="hr-score"><b>4.9</b>/5</span>
+      <span class="hr-sep"></span>
+      <span class="hr-lbl" data-i18n-html="hero.rating"><b>+500K€</b> générés avec nos ads</span>
     </div>
 
-    <!-- BANDEAU STATS (social proof) -->
+    <!-- BANDEAU STATS (social proof dark) -->
     <div class="hero-stats">
       <div class="hs-item">
         <div class="hs-big">+500K€</div>
-        <div class="hs-lbl">Générés avec nos ads</div>
+        <div class="hs-lbl" data-i18n="stat.generated">Générés avec nos ads</div>
       </div>
       <div class="hs-sep"></div>
       <div class="hs-item">
         <div class="hs-big">÷3</div>
-        <div class="hs-lbl">CPA moyen observé</div>
+        <div class="hs-lbl" data-i18n="stat.cpa">CPA moyen observé</div>
       </div>
       <div class="hs-sep"></div>
       <div class="hs-item">
         <div class="hs-big">150K€<span class="plus-mini">+</span></div>
-        <div class="hs-lbl">CA mensuel clients</div>
+        <div class="hs-lbl" data-i18n="stat.ca">CA mensuel clients</div>
       </div>
       <div class="hs-sep"></div>
       <div class="hs-item">
         <div class="hs-big">24h</div>
-        <div class="hs-lbl">Du brief à la livraison</div>
+        <div class="hs-lbl" data-i18n="stat.delivery">Du brief à la livraison</div>
       </div>
     </div>
   </div>
@@ -1523,8 +1626,8 @@
         <h2>Le feed<br><span class="serif-em">brûle</span> ton budget.</h2>
       </div>
       <p class="section-sub">
-        Les CPMs explosent. Les créas s'essoufflent en jours. Le ciblage ne sauve plus personne —
-        seul le <strong>volume de créas testées</strong> fait la diff en 2026.
+        Les CPMs explosent. Les créas s'essoufflent en jours. Le ciblage ne sauve plus personne.
+        Seul le <strong>volume de créas testées</strong> fait la différence en 2026.
       </p>
     </div>
     <div class="market-grid">
@@ -1598,7 +1701,7 @@
         <h2>Des créas qu'on<br><span class="serif-em">ne skip pas.</span></h2>
       </div>
       <p class="section-sub">
-        Sélection récente. Chaque pub est pensée, écrite et produite pour une seule marque —
+        Sélection récente. Chaque pub est pensée, écrite et produite pour une seule marque,
         avec un angle qui lui appartient.
       </p>
     </div>
@@ -1639,24 +1742,6 @@
       </div>
     </div>
 
-    <div class="stats-bar">
-      <div class="stat">
-        <p class="big"><span class="serif-em">÷3</span></p>
-        <p class="lbl">CPA moyen observé</p>
-      </div>
-      <div class="stat">
-        <p class="big">24h</p>
-        <p class="lbl">Du brief à la livraison</p>
-      </div>
-      <div class="stat">
-        <p class="big">150k€<span class="serif-em">+</span></p>
-        <p class="lbl">CA mensuel des clients</p>
-      </div>
-      <div class="stat">
-        <p class="big">8×</p>
-        <p class="lbl">Créas uniques / pack</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1670,7 +1755,7 @@
       </div>
       <p class="section-sub">
         On utilise l'IA comme un studio utilise une caméra : un outil, pas un raccourci.
-        Le cerveau, l'angle, la direction créative — c'est nous. Pour toi, rien que pour toi.
+        Le cerveau, l'angle, la direction créative restent humains. Pour toi, rien que pour toi.
       </p>
     </div>
 
@@ -1749,7 +1834,7 @@
     <div class="process">
       <div class="pcard">
         <div>
-          <span class="p-n">01 — BRIEF</span>
+          <span class="p-n">01 · Brief</span>
           <h3>On <em>écoute.</em></h3>
           <p>30 minutes en 1:1. On capte ton produit, tes personas, tes concurrents, ton angle unique. Zéro template.</p>
         </div>
@@ -1759,7 +1844,7 @@
       </div>
       <div class="pcard">
         <div>
-          <span class="p-n">02 — CRÉA</span>
+          <span class="p-n">02 · Créa</span>
           <h3>On <em>crée.</em></h3>
           <p>3 vidéos + 5 statiques, écrites, montées pour toi. Hooks testés, angles variés, variations prêtes à scaler.</p>
         </div>
@@ -1769,7 +1854,7 @@
       </div>
       <div class="pcard">
         <div>
-          <span class="p-n">03 — SHIP</span>
+          <span class="p-n">03 · Ship</span>
           <h3>On <em>livre.</em></h3>
           <p>24h chrono. Pack complet + plan de test + angles de variantes. Plug &amp; play sur Meta, TikTok, YouTube.</p>
         </div>
@@ -1806,25 +1891,25 @@
       <!-- STARTER -->
       <div class="tier" data-idx="01">
         <div class="tier-idx">01</div>
-        <div class="tier-head">
-          <div class="tier-head-left">
-            <span class="tier-tag">Starter</span>
-            <span class="tier-sub">Pour tester vite</span>
-          </div>
+        <div class="tier-top">
+          <span class="tier-tag">Starter</span>
+          <p class="tier-sub">Pour tester vite.</p>
         </div>
         <div class="tier-price">
           <span class="num">199</span><span class="cur">€</span>
+          <span class="tier-unit">TTC</span>
         </div>
-        <p class="tier-for">Dropshippeurs · Solo · Tests produit</p>
+        <p class="tier-for">Idéal pour solo & dropshippeurs qui veulent tester un nouveau produit.</p>
+        <div class="tier-divider"></div>
         <ul class="feats">
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> <strong>3 vidéos × 3 hooks = 9 variantes</strong></li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> 10 statiques HD</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Scripts AIDA / PAS / BAB</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> 1 tour de révision</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Livraison &lt; 24h · Droits complets</li>
+          <li><span class="check"></span><strong>3 vidéos</strong> × 3 hooks <span class="feat-muted">(9 variantes)</span></li>
+          <li><span class="check"></span><strong>10 statiques</strong> HD</li>
+          <li><span class="check"></span>Scripts inclus</li>
+          <li><span class="check"></span>1 révision</li>
+          <li><span class="check"></span>Livraison <strong>&lt; 24h</strong></li>
         </ul>
         <button class="btn tier-cta" data-pack="starter" data-price="199">
-          Choisir Starter
+          <span>Choisir Starter</span>
           <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
         </button>
       </div>
@@ -1832,27 +1917,28 @@
       <!-- PRO (featured) -->
       <div class="tier featured" data-idx="02">
         <div class="tier-glow"></div>
-        <span class="tier-badge"><span class="tb-dot"></span> Plus populaire</span>
+        <span class="tier-badge"><span class="tb-dot"></span> Le plus choisi</span>
         <div class="tier-idx">02</div>
-        <div class="tier-head">
-          <div class="tier-head-left">
-            <span class="tier-tag">Pro</span>
-            <span class="tier-sub">Pour scaler</span>
-          </div>
+        <div class="tier-top">
+          <span class="tier-tag">Pro</span>
+          <p class="tier-sub">Pour scaler.</p>
         </div>
         <div class="tier-price">
           <span class="num">299</span><span class="cur">€</span>
+          <span class="tier-unit">TTC</span>
         </div>
-        <p class="tier-for">E-commerçants 10–100k€/mois · DTC</p>
+        <p class="tier-for">Pour e-commerçants 10k–100k€/mois qui veulent pousser leur ROAS.</p>
+        <div class="tier-divider"></div>
         <ul class="feats">
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> <strong>5 vidéos × 3 hooks = 15 variantes</strong></li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> 20 statiques multi-formats</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Stratégie d'angles (awareness / consideration / conversion)</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> 2 tours de révision</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Livraison &lt; 24h · Droits complets</li>
+          <li><span class="check"></span><strong>5 vidéos</strong> × 3 hooks <span class="feat-muted">(15 variantes)</span></li>
+          <li><span class="check"></span><strong>20 statiques</strong> multi-formats</li>
+          <li><span class="check"></span>Scripts inclus</li>
+          <li><span class="check"></span>Stratégie d'angles</li>
+          <li><span class="check"></span>2 révisions</li>
+          <li><span class="check"></span>Livraison <strong>&lt; 24h</strong></li>
         </ul>
         <button class="btn tier-cta featured" data-pack="pro" data-price="299">
-          Choisir Pro
+          <span>Choisir Pro</span>
           <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
         </button>
       </div>
@@ -1860,82 +1946,36 @@
       <!-- SCALE -->
       <div class="tier dark" data-idx="03">
         <div class="tier-idx">03</div>
-        <div class="tier-head">
-          <div class="tier-head-left">
-            <span class="tier-tag">Scale</span>
-            <span class="tier-sub">Pour dominer</span>
-          </div>
+        <div class="tier-top">
+          <span class="tier-tag">Scale</span>
+          <p class="tier-sub">Pour dominer.</p>
         </div>
         <div class="tier-price">
           <span class="num">499</span><span class="cur">€</span>
+          <span class="tier-unit">TTC</span>
         </div>
-        <p class="tier-for">Marques 100k+/mois · Agences</p>
+        <p class="tier-for">Pour marques 100k€+/mois et agences qui veulent un flux constant de créas.</p>
+        <div class="tier-divider"></div>
         <ul class="feats">
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> <strong>10 vidéos × 3 hooks = 30 variantes</strong></li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> 30 statiques multi-formats</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Stratégie complète + personas testés</li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> <strong>Reporting créatif complet</strong></li>
-          <li><span class="check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Révisions illimitées · Livraison &lt; 24h</li>
+          <li><span class="check"></span><strong>10 vidéos</strong> × 3 hooks <span class="feat-muted">(30 variantes)</span></li>
+          <li><span class="check"></span><strong>30 statiques</strong> multi-formats</li>
+          <li><span class="check"></span>Scripts inclus</li>
+          <li><span class="check"></span>Stratégie complète + personas</li>
+          <li><span class="check"></span><strong>Reporting créatif</strong></li>
+          <li><span class="check"></span>Révisions illimitées</li>
         </ul>
         <button class="btn tier-cta dark" data-pack="scale" data-price="499">
-          Choisir Scale
+          <span>Choisir Scale</span>
           <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
         </button>
       </div>
     </div>
 
     <p class="tiers-foot">
-      <span class="tf-lbl">UPSELL</span>
-      Vidéo supplémentaire <strong>+79€</strong> · Adaptation langue EN/ES/DE <strong>+30€/vidéo</strong>
+      <span class="tf-lbl">Options</span>
+      Vidéo supplémentaire <strong>+79€</strong> · Adaptation langue EN/ES/DE <strong>+30€</strong> par vidéo
     </p>
 
-    <!-- PACK SUR-MESURE -->
-    <div class="custom-pack" id="customPack">
-      <div class="cp-head">
-        <div>
-          <h3>Construis <span class="serif-em">ton</span> pack.</h3>
-          <p>Tu choisis le nombre de vidéos. Plus tu en prends, plus on t'offre de créas.</p>
-        </div>
-      </div>
-
-      <div class="cp-counter cp-counter-solo">
-        <div class="lbl">
-          <span>Nombre de vidéos IA</span>
-          <span class="unit-price">50€ / vidéo</span>
-        </div>
-        <div class="label-big">Vidéos <em>sur-mesure</em></div>
-        <div class="cp-stepper">
-          <button class="cp-btn" data-act="dec" data-target="video" aria-label="Moins de vidéos">−</button>
-          <div class="cp-val" id="cpVideo">1</div>
-          <button class="cp-btn" data-act="inc" data-target="video" aria-label="Plus de vidéos">+</button>
-        </div>
-      </div>
-
-      <div class="cp-bonus">
-        <div class="cp-bonus-hd">
-          <span class="gift">🎁</span>
-          <span>Bonus progressifs</span>
-        </div>
-        <ul class="cp-bonus-list" id="cpBonus">
-          <li data-min="3"><span class="tick"></span>3 vidéos → <strong style="margin-left:4px">+5 statiques offerts</strong></li>
-          <li data-min="5"><span class="tick"></span>5 vidéos → <strong style="margin-left:4px">+1 vidéo &amp; +5 statiques offerts</strong></li>
-          <li data-min="7"><span class="tick"></span>7 vidéos → <strong style="margin-left:4px">+2 vidéos &amp; +7 statiques offerts</strong></li>
-          <li data-min="10"><span class="tick"></span>10 vidéos → <strong style="margin-left:4px">+3 vidéos &amp; +10 statiques offerts</strong></li>
-          <li data-min="15"><span class="tick"></span>15 vidéos → <strong style="margin-left:4px">+5 vidéos &amp; +15 statiques offerts</strong></li>
-        </ul>
-      </div>
-
-      <div class="cp-total">
-        <div>
-          <div class="total-lbl">Total de ton pack</div>
-          <div class="total-val"><span id="cpTotal">50</span><span class="cur">€</span></div>
-          <div class="summary" id="cpSummary">1 vidéo · 0 bonus</div>
-        </div>
-        <button class="btn btn-create" id="openCustom">
-          Créer mon pack →
-        </button>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1952,15 +1992,15 @@
     <div class="faq">
       <details open>
         <summary>C'est quoi concrètement le pack ?<span class="plus">+</span></summary>
-        <p>Un brief 1:1 de 30 min avec le fondateur, puis 3 créas vidéo IA (15–30s) + 5 visuels statiques HD — 100% personnalisés à ta marque et tes personas. Livraison en moins de 24h. Formats Meta &amp; TikTok, prêts à uploader dans ton ad manager.</p>
+        <p>Un brief 1:1 de 30 min avec le fondateur, puis 3 créas vidéo IA (15 à 30s) et 5 visuels statiques HD, 100% personnalisés à ta marque et tes personas. Livraison en moins de 24h. Formats Meta et TikTok, prêts à uploader dans ton ad manager.</p>
       </details>
       <details>
         <summary>C'est vraiment du sur-mesure ou vous recyclez ?<span class="plus">+</span></summary>
-        <p>Zéro template, zéro recyclage. Chaque créa est pensée, écrite et montée pour ton produit — à partir de ton brief 1:1. C'est pour ça qu'on prend peu de clients en même temps : la qualité passe avant le volume.</p>
+        <p>Zéro template, zéro recyclage. Chaque créa est pensée, écrite et montée pour ton produit, à partir de ton brief 1:1. C'est pour ça qu'on prend peu de clients en même temps : la qualité passe avant le volume.</p>
       </details>
       <details>
         <summary>C'est pour quel type de marque ?<span class="plus">+</span></summary>
-        <p>E-commerce, de la DNVB qui lance aux marques qui font +150k€/mois. Le pack testing est fait pour démarrer sans engagement — juste pour voir ce que ça donne.</p>
+        <p>E-commerce, de la DNVB qui lance aux marques qui font +150k€/mois. Le pack Starter est fait pour démarrer sans engagement, juste pour voir ce que ça donne.</p>
       </details>
       <details>
         <summary>Et si les créas performent pas ?<span class="plus">+</span></summary>
@@ -1968,7 +2008,7 @@
       </details>
       <details>
         <summary>Pourquoi l'IA plutôt qu'un shooting ?<span class="plus">+</span></summary>
-        <p>Vitesse et coût. Un shooting UGC c'est 2 semaines + 2000€ mini. L'IA bien maîtrisée te donne 80% du résultat en 24h pour 150€. On ne remplace pas l'humain — on remplace la lenteur.</p>
+        <p>Vitesse et coût. Un shooting UGC c'est 2 semaines et 2000€ minimum. L'IA bien maîtrisée te donne 80% du résultat en 24h pour 199€. On ne remplace pas l'humain, on remplace la lenteur.</p>
       </details>
       <details>
         <summary>Comment on démarre ?<span class="plus">+</span></summary>
@@ -1989,7 +2029,7 @@
           <h2>Ramène un pote.<br><span class="serif-em">Touche&nbsp;20%.</span></h2>
           <p class="aff-sub">
             Tu connais un e-commerçant qui galère avec ses créas ? Tu lui envoies, il commande,
-            <strong>tu touches 20% cash</strong> sur chaque vente — à vie.
+            <strong>tu touches 20% cash</strong> sur chaque vente, à vie.
             Zéro bullshit, zéro plafond.
           </p>
           <a href="https://wa.me/33642852291?text=Hello%2C%20je%20veux%20devenir%20affili%C3%A9%20hookd." target="_blank" rel="noopener" class="btn btn-lime" style="margin-top:10px">
@@ -2001,7 +2041,7 @@
           <div class="aff-step">
             <div class="aff-n">01</div>
             <h4>Tu partages</h4>
-            <p>On te file un code affilié unique. Tu le partages sur X, Discord, WhatsApp — où tu veux.</p>
+            <p>On te file un code affilié unique. Tu le partages sur X, Discord, WhatsApp, où tu veux.</p>
           </div>
           <div class="aff-step">
             <div class="aff-n">02</div>
@@ -2142,6 +2182,35 @@
   </div>
 </footer>
 
+<!-- LANGUAGE PICKER MODAL -->
+<div class="lang-backdrop" id="langBackdrop">
+  <div class="lang-modal">
+    <button class="lang-close" id="langClose" aria-label="Close">×</button>
+    <div class="lang-header">
+      <span class="lang-kicker">🌍 hookd.</span>
+      <h3 class="lang-title" id="langTitle" data-i18n-html="lang.title">Choose your language<br><em>Choisis ta langue</em></h3>
+      <p class="lang-sub" id="langSub" data-i18n="lang.sub">We'll translate the site automatically. You can change it anytime from the navbar.</p>
+    </div>
+    <div class="lang-grid">
+      <button class="lang-opt" data-lang="fr">
+        <span class="lang-flag">🇫🇷</span>
+        <span class="lang-name">Français</span>
+        <span class="lang-meta">Langue par défaut</span>
+      </button>
+      <button class="lang-opt" data-lang="en">
+        <span class="lang-flag">🇬🇧</span>
+        <span class="lang-name">English</span>
+        <span class="lang-meta">Full translation</span>
+      </button>
+      <button class="lang-opt" data-lang="es">
+        <span class="lang-flag">🇪🇸</span>
+        <span class="lang-name">Español</span>
+        <span class="lang-meta">Traducción completa</span>
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- ONBOARDING MODAL -->
 <div class="modal-backdrop" id="modal">
   <div class="modal onb">
@@ -2211,7 +2280,7 @@
       <span class="m-giant">03</span>
       <div class="m-kicker">◆ 03 / Ton site</div>
       <h3 class="m-title">Où est-ce qu'on peut <em>voir ça</em> ?</h3>
-      <p class="m-desc">Ton shop, site, lien Instagram, portfolio — ce que t'as.</p>
+      <p class="m-desc">Ton shop, site, lien Instagram, portfolio, ce que t'as.</p>
       <div class="inp-wrap">
         <label>URL <span class="req">*</span></label>
         <input type="text" class="inp" data-field="url" placeholder="https://tamarque.com" autocomplete="url" inputmode="url"/>
@@ -2326,7 +2395,7 @@
       <span class="m-giant">09</span>
       <div class="m-kicker">◆ 09 / Le pack</div>
       <h3 class="m-title">Quel pack <em>t'intéresse</em> ?</h3>
-      <p class="m-desc">Tu peux aussi nous dire "je sais pas" — on te guide.</p>
+      <p class="m-desc">Tu peux aussi nous dire "je sais pas", on te guide.</p>
       <div class="qcm" data-field="pack" data-mode="single">
         <div class="qcm-opt" data-val="launch"><span class="emoji">🎁</span> Pack de lancement · 150€ <span class="check"></span></div>
         <div class="qcm-opt" data-val="starter"><span class="emoji">🥉</span> Starter · 199€ <span class="check"></span></div>
@@ -2364,7 +2433,7 @@
       <span class="m-giant">11</span>
       <div class="m-kicker">◆ 11 / Ton contact</div>
       <h3 class="m-title">On te <em>répond où</em> ?</h3>
-      <p class="m-desc">Le WhatsApp c'est le plus rapide — on confirme sous 24h.</p>
+      <p class="m-desc">Le WhatsApp c'est le plus rapide, on confirme sous 24h.</p>
       <div class="contact-grid">
         <div class="row2">
           <div class="inp-wrap">
@@ -2413,9 +2482,9 @@
       <div class="success-wrap">
         <div class="success-check">✓</div>
         <h3>Formulaire <em>bien envoyé.</em></h3>
-        <p class="sub">Merci <span id="successName">!</span> — On a tout ce qu'il faut pour préparer ton pack.</p>
+        <p class="sub">Merci <span id="successName">!</span> On a tout ce qu'il faut pour préparer ton pack.</p>
         <div class="success-next">
-          <div class="ln"><span><b>Réponse sous 24h</b> — par WhatsApp en priorité, email en backup.</span></div>
+          <div class="ln"><span><b>Réponse sous 24h</b> par WhatsApp en priorité, email en backup.</span></div>
           <div class="ln"><span>Jorys (fondateur) <b>révise ton brief à la main</b> avant de te revenir.</span></div>
           <div class="ln"><span>En attendant, tu peux <b>nous envoyer ton site / tes créas</b> sur WhatsApp.</span></div>
         </div>
@@ -2439,6 +2508,85 @@
     custom:  'Sur-mesure',
     unsure:  'Pas encore décidé'
   };
+
+  /* ───── i18n : langue du site ───── */
+  const I18N = {
+    fr: {
+      'nav.creas':'Créas','nav.approche':'Approche','nav.offre':'Offre','nav.affiliate':'Affiliation','nav.cta':'Lancer un pack',
+      'hero.pill':'3 places ouvertes pour avril 2026',
+      'hero.title':'Des ads qui <em>vendent.</em><br>En 24h.',
+      'hero.sub':"Vidéos UGC, Pixar et statiques pour e-commerçants. On écrit, on monte, on livre. Sans template, sans abonnement, en moins de 24h.",
+      'hero.cta1':'Voir les packs','hero.cta2':'Voir les créas',
+      'hero.rating':'<b>+500K€</b> générés avec nos ads',
+      'stat.generated':'Générés avec nos ads','stat.cpa':'CPA moyen observé','stat.ca':'CA mensuel clients','stat.delivery':'Du brief à la livraison',
+      'lang.title':'Choose your language<br><em>Choisis ta langue</em>',
+      'lang.sub':"Le site s'adapte automatiquement. Tu peux changer à tout moment depuis la barre de navigation."
+    },
+    en: {
+      'nav.creas':'Creatives','nav.approche':'Approach','nav.offre':'Pricing','nav.affiliate':'Affiliate','nav.cta':'Start a pack',
+      'hero.pill':'3 spots open for April 2026',
+      'hero.title':'Ads that <em>convert.</em><br>In 24h.',
+      'hero.sub':"UGC, Pixar and static creatives for e-commerce. We write, edit, ship. No templates, no subscription, in under 24 hours.",
+      'hero.cta1':'See the packs','hero.cta2':'See creatives',
+      'hero.rating':'<b>+500K€</b> generated with our ads',
+      'stat.generated':'Generated with our ads','stat.cpa':'Average CPA drop','stat.ca':'Monthly client revenue','stat.delivery':'From brief to delivery',
+      'lang.title':'Choose your language',
+      'lang.sub':"We'll translate the site automatically. You can switch anytime from the navbar."
+    },
+    es: {
+      'nav.creas':'Creativos','nav.approche':'Enfoque','nav.offre':'Precios','nav.affiliate':'Afiliación','nav.cta':'Lanzar un pack',
+      'hero.pill':'3 plazas abiertas para abril 2026',
+      'hero.title':'Anuncios que <em>venden.</em><br>En 24h.',
+      'hero.sub':"Vídeos UGC, Pixar y estáticos para e-commerce. Escribimos, montamos, entregamos. Sin plantillas, sin suscripción, en menos de 24 horas.",
+      'hero.cta1':'Ver los packs','hero.cta2':'Ver creativos',
+      'hero.rating':'<b>+500K€</b> generados con nuestros anuncios',
+      'stat.generated':'Generados con anuncios','stat.cpa':'CPA medio observado','stat.ca':'Facturación mensual clientes','stat.delivery':'Del brief a la entrega',
+      'lang.title':'Elige tu idioma',
+      'lang.sub':"El sitio se traduce automáticamente. Puedes cambiar cuando quieras desde la navbar."
+    }
+  };
+
+  function applyLang(lang){
+    const dict = I18N[lang] || I18N.fr;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if(dict[k]) el.textContent = dict[k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.getAttribute('data-i18n-html');
+      if(dict[k]) el.innerHTML = dict[k];
+    });
+    const code = document.getElementById('langBtnCode');
+    if(code) code.textContent = lang.toUpperCase();
+    localStorage.setItem('hookd_lang', lang);
+  }
+
+  (function initLang(){
+    const stored = localStorage.getItem('hookd_lang');
+    const langBackdrop = document.getElementById('langBackdrop');
+    const langClose    = document.getElementById('langClose');
+    const langBtn      = document.getElementById('langBtn');
+
+    function openPicker(){ langBackdrop.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closePicker(){ langBackdrop.classList.remove('open'); document.body.style.overflow=''; }
+
+    if(stored){
+      applyLang(stored);
+    } else {
+      setTimeout(openPicker, 400);
+    }
+
+    document.querySelectorAll('.lang-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyLang(btn.dataset.lang);
+        closePicker();
+      });
+    });
+    langClose && langClose.addEventListener('click', closePicker);
+    langBackdrop.addEventListener('click', e => { if(e.target === langBackdrop) closePicker(); });
+    langBtn && langBtn.addEventListener('click', openPicker);
+  })();
 
   /* ───── Telegram (notification bot) ─────
      ⚠️ Le token est exposé côté client — n'importe qui peut l'extraire.
@@ -2816,89 +2964,6 @@
     return r.json();
   }
 
-  /* ───── Pack sur-mesure builder (vidéos only + bonus progressifs) ───── */
-  const PRICE_VIDEO = 50;
-  const TIERS = [
-    { minVideo: 15, bonusVideo: 5, bonusStatic: 15 },
-    { minVideo: 10, bonusVideo: 3, bonusStatic: 10 },
-    { minVideo: 7,  bonusVideo: 2, bonusStatic: 7  },
-    { minVideo: 5,  bonusVideo: 1, bonusStatic: 5  },
-    { minVideo: 3,  bonusVideo: 0, bonusStatic: 5  },
-  ];
-
-  const state = { video: 1 };
-  const cpVideo = document.getElementById('cpVideo');
-  const cpTotal = document.getElementById('cpTotal');
-  const cpSummary = document.getElementById('cpSummary');
-  const cpBonusItems = document.querySelectorAll('#cpBonus li');
-  const cpBtns = document.querySelectorAll('.cp-btn');
-  const openCustomBtn = document.getElementById('openCustom');
-
-  function currentTier(v){
-    return TIERS.find(t => v >= t.minVideo) || { minVideo:0, bonusVideo:0, bonusStatic:0 };
-  }
-
-  function renderCustom(){
-    const v = state.video;
-    const tier = currentTier(v);
-    const bonusVideo = tier.bonusVideo;
-    const bonusStatic = tier.bonusStatic;
-    const total = v * PRICE_VIDEO;
-
-    cpVideo.textContent = v;
-    cpTotal.textContent = total;
-
-    // summary ligne
-    const totalVideos = v + bonusVideo;
-    const parts = [`${totalVideos} vidéo${totalVideos>1?'s':''}`];
-    if(bonusStatic > 0) parts.push(`${bonusStatic} statique${bonusStatic>1?'s':''}`);
-    else parts.push('0 bonus');
-    if(bonusVideo > 0 || bonusStatic > 0){
-      const b = [];
-      if(bonusVideo > 0) b.push(`${bonusVideo} vidéo${bonusVideo>1?'s':''}`);
-      if(bonusStatic > 0) b.push(`${bonusStatic} statique${bonusStatic>1?'s':''}`);
-      parts.push(`<span class="bonus">${b.join(' + ')} offert${(bonusVideo+bonusStatic)>1?'s':''}</span>`);
-    }
-    cpSummary.innerHTML = parts.join(' · ');
-
-    // bonus list states
-    cpBonusItems.forEach(li => {
-      const min = parseInt(li.dataset.min, 10);
-      li.classList.toggle('on', v >= min);
-    });
-
-    // disable minus at minimum
-    document.querySelector('.cp-btn[data-target="video"][data-act="dec"]').disabled = (v <= 1);
-  }
-
-  cpBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const act = btn.dataset.act;
-      const delta = act === 'inc' ? 1 : -1;
-      state.video = Math.max(1, Math.min(20, state.video + delta));
-      renderCustom();
-    });
-  });
-
-  openCustomBtn.addEventListener('click', () => {
-    const v = state.video;
-    const tier = currentTier(v);
-    const total = v * PRICE_VIDEO;
-    const totalVideos = v + tier.bonusVideo;
-    let bonusTxt = '';
-    if(tier.bonusVideo > 0 || tier.bonusStatic > 0){
-      const bits = [];
-      if(tier.bonusVideo > 0) bits.push(`${tier.bonusVideo} vidéo${tier.bonusVideo>1?'s':''}`);
-      if(tier.bonusStatic > 0) bits.push(`${tier.bonusStatic} statique${tier.bonusStatic>1?'s':''}`);
-      bonusTxt = ` + ${bits.join(' + ')} offert${(tier.bonusVideo+tier.bonusStatic)>1?'s':''}`;
-    }
-    const msg = encodeURIComponent(
-      `Hello, je veux créer un pack sur-mesure : ${v} vidéo${v>1?'s':''}${bonusTxt}. Total : ${total}€.`
-    );
-    window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank', 'noopener');
-  });
-
-  renderCustom();
 </script>
 
 </body>
