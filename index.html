@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>hookd. · Pubs IA sur-mesure pour e‑commerçants</title>
-<meta name="description" content="Studio indépendant. Brief 1:1 avec le fondateur, créas IA 100% personnalisées à ta marque, livrées en 24h. Pack de lancement à 150€." />
+<meta name="description" content="Studio indépendant. Formulaire de brief 5 min, créas IA 100% personnalisées à ta marque, livrées en 48h. Pack de lancement à partir de 149€." />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='1.5' y='1.5' width='29' height='29' rx='6' fill='%23D4F24F' stroke='%230B0A08' stroke-width='3'/><text x='9' y='24' font-family='Georgia,Times,serif' font-size='22' font-style='italic' font-weight='400' fill='%230B0A08'>h</text><circle cx='22' cy='22.5' r='2.6' fill='%23FF5A32' stroke='%230B0A08' stroke-width='1'/></svg>" />
 <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%23D4F24F' stroke='%230B0A08' stroke-width='14'/><text x='48' y='132' font-family='Georgia,Times,serif' font-size='120' font-style='italic' font-weight='400' fill='%230B0A08'>h</text><circle cx='124' cy='128' r='15' fill='%23FF5A32' stroke='%230B0A08' stroke-width='6'/></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -924,150 +924,246 @@
     .tier-idx{font-size:56px}
   }
 
-  /* ─── Pack sur-mesure (builder) ─── */
-  .custom-pack{
-    margin-top:36px;
-    background:var(--bg);
-    border:1px solid var(--line);border-radius:20px;
-    padding:44px 40px;
-    box-shadow:var(--shadow);
-    position:relative;
+  /* ─── Promo lancement + prix barrés + badges ─── */
+  .promo-banner{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    margin:0 0 30px;padding:14px 22px;
+    background:linear-gradient(135deg, var(--v), #6D28D9);color:#fff;
+    border-radius:14px;
+    font-family:inherit;font-weight:600;font-size:14px;letter-spacing:.015em;
+    box-shadow:0 8px 26px rgba(124,58,237,.34);
+    text-align:center;
   }
-  .custom-pack::before{
-    content:"SUR-MESURE";
-    position:absolute;top:-12px;left:32px;
-    font-family:inherit;
-    font-size:11.5px;font-weight:600;letter-spacing:0;
+  .promo-banner .star{font-size:13px;opacity:.92}
+  .promo-banner strong{font-weight:700;color:#fff}
+  .tier-price .num-old{
+    font-size:28px;font-weight:600;color:var(--muted);
+    text-decoration:line-through;font-style:normal;
+    letter-spacing:-0.02em;margin-right:6px;line-height:1;
+    align-self:center;
+  }
+  .tier.featured .tier-price .num-old,
+  .tier.dark .tier-price .num-old{color:rgba(255,255,255,.42)}
+  .promo-badge{
+    position:absolute;top:18px;left:22px;
+    display:inline-flex;align-items:center;gap:5px;
+    padding:5px 11px;border-radius:999px;
     background:var(--v);color:#fff;
-    border:none;
-    padding:6px 14px;border-radius:999px;
-    box-shadow:0 8px 20px rgba(124,58,237,.35);
-    transform:none;
+    font-family:inherit;font-size:10.5px;font-weight:700;
+    letter-spacing:.04em;
+    box-shadow:0 6px 18px rgba(124,58,237,.3);
+    z-index:3;
   }
-  .cp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:28px;flex-wrap:wrap}
-  .cp-head h3{
-    font-family:inherit;font-size:30px;margin:0 0 6px;
-    letter-spacing:-0.025em;font-weight:700;line-height:1.1;color:var(--text);
+  .tier.featured .promo-badge{background:#fff;color:var(--v);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+  .tier.dark .promo-badge{background:#C4B5FD;color:var(--text)}
+
+  /* ─── Pack Lancement (liquid glass) ─── */
+  .launch-pack{
+    position:relative;
+    background:#0F172A;color:#fff;
+    border:1px solid rgba(196,181,253,.18);border-radius:22px;
+    padding:32px 36px;
+    margin:0 0 30px;
+    box-shadow:0 4px 12px rgba(15,23,42,.14), 0 28px 72px rgba(124,58,237,.36);
+    overflow:hidden;isolation:isolate;
   }
-  .cp-head h3 .serif-em{font-family:inherit;font-style:normal;font-weight:700;color:var(--v)}
-  .cp-head p{color:var(--muted);margin:0;font-size:14.5px;font-weight:400}
-  .cp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
-  .cp-counter{
-    background:var(--soft);
-    border:1px solid var(--line);border-radius:14px;
-    padding:22px 24px;
-    box-shadow:none;
+  .launch-glow{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(55% 50% at 85% 0%, rgba(124,58,237,.5), transparent 55%),
+      radial-gradient(40% 55% at 15% 100%, rgba(139,92,246,.3), transparent 60%);
   }
-  .cp-counter-solo{
-    margin-bottom:22px;padding:26px 28px;
-    display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
+  .launch-pack > *{position:relative;z-index:1}
+  .launch-head{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    margin-bottom:22px;flex-wrap:wrap;
   }
-  .cp-counter-solo .lbl{margin-bottom:10px}
-  .cp-counter-solo .label-big{margin-bottom:0;font-size:22px}
-  .cp-counter-solo .cp-stepper{justify-self:end}
-  @media (max-width:700px){
-    .cp-counter-solo{grid-template-columns:1fr;gap:14px;text-align:left}
-    .cp-counter-solo .cp-stepper{justify-self:start}
+  .launch-sticker{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:7px 14px;border-radius:999px;
+    background:linear-gradient(135deg, var(--v), #A78BFA);
+    color:#fff;font-family:inherit;font-size:11.5px;font-weight:700;
+    letter-spacing:.06em;
+    box-shadow:0 8px 22px rgba(124,58,237,.5);
   }
-  .cp-counter .lbl{
-    font-family:inherit;
-    font-size:12.5px;font-weight:500;letter-spacing:0;text-transform:none;
-    color:var(--muted);
-    display:flex;justify-content:space-between;align-items:center;
-    margin-bottom:14px;
+  .launch-sticker .fire{display:inline-block;animation:firePulse 1.4s ease-in-out infinite}
+  @keyframes firePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2) rotate(-4deg)}}
+  .launch-countdown{
+    display:flex;align-items:center;gap:8px;
+    padding:8px 12px;border-radius:14px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(16px) saturate(180%);
+    -webkit-backdrop-filter:blur(16px) saturate(180%);
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 6px 20px rgba(0,0,0,.25);
   }
-  .cp-counter .unit-price{font-weight:500;color:var(--text);font-size:12.5px}
-  .cp-counter .label-big{
-    font-family:inherit;
-    font-size:19px;font-weight:700;letter-spacing:-0.01em;
-    color:var(--text);margin-bottom:12px;display:flex;align-items:baseline;gap:6px;
+  .launch-countdown .lc-lbl{
+    font-family:inherit;font-size:10.5px;font-weight:600;letter-spacing:.1em;
+    color:rgba(255,255,255,.55);text-transform:uppercase;padding-right:4px;
   }
-  .cp-counter .label-big em{font-family:inherit;font-style:normal;font-weight:700;color:var(--v)}
-  .cp-stepper{
-    display:flex;align-items:center;gap:12px;
+  .launch-countdown .lc-cell{
+    display:flex;flex-direction:column;align-items:center;min-width:44px;
+    padding:6px 8px;border-radius:10px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15);
   }
-  .cp-btn{
-    width:40px;height:40px;border-radius:999px;
-    background:var(--bg);color:var(--text);
-    border:1px solid var(--line);
-    font-family:inherit;font-size:20px;font-weight:600;
-    cursor:pointer;display:flex;align-items:center;justify-content:center;
-    transition:background .15s ease, border-color .15s ease, color .15s ease;
-    box-shadow:0 1px 2px rgba(15,23,42,.05);
-  }
-  .cp-btn:hover{background:var(--v-soft);border-color:var(--v);color:var(--v);transform:none;box-shadow:0 2px 6px rgba(124,58,237,.15)}
-  .cp-btn:active{transform:scale(.97);box-shadow:none}
-  .cp-btn:disabled{opacity:.35;pointer-events:none}
-  .cp-val{
-    font-family:inherit;
-    font-size:38px;font-weight:700;line-height:1;letter-spacing:-0.025em;
-    min-width:52px;text-align:center;
-    color:var(--text);
+  .launch-countdown .lc-num{
+    font-family:inherit;font-weight:800;font-style:italic;
+    font-size:22px;line-height:1;letter-spacing:-0.03em;color:#fff;
     font-variant-numeric:tabular-nums;
   }
-  .cp-bonus{
-    background:var(--text);color:#fff;
-    border:none;border-radius:14px;
-    padding:22px 24px;margin-bottom:22px;
+  .launch-countdown .lc-unit{
+    font-family:inherit;font-size:9.5px;font-weight:600;letter-spacing:.08em;
+    color:rgba(255,255,255,.55);text-transform:uppercase;margin-top:2px;
   }
-  .cp-bonus-hd{
-    display:flex;align-items:center;gap:10px;margin-bottom:14px;
-    font-family:inherit;
-    font-size:12.5px;font-weight:600;letter-spacing:0;text-transform:none;
+  .launch-countdown .lc-sep{font-weight:800;font-style:italic;color:rgba(255,255,255,.3);font-size:18px;padding:0 2px}
+  .launch-body{
+    display:grid;grid-template-columns:1.5fr 1fr;gap:44px;align-items:center;
   }
-  .cp-bonus-hd .gift{
+  .launch-title{
+    font-family:inherit;font-weight:800;font-style:italic;
+    font-size:clamp(30px,3.6vw,46px);letter-spacing:-0.035em;line-height:1;
+    margin:0 0 10px;color:#fff;
+  }
+  .launch-title em{font-style:italic;color:#C4B5FD;font-weight:800}
+  .launch-sub{
+    color:rgba(255,255,255,.68);font-size:14.5px;line-height:1.55;
+    margin:0 0 18px;max-width:44ch;font-weight:400;
+  }
+  .launch-feats{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+  .launch-feats li{
+    display:flex;align-items:center;gap:10px;
+    color:rgba(255,255,255,.88);font-size:14px;font-weight:400;line-height:1.4;
+  }
+  .launch-feats li .check{
+    width:18px;height:18px;border-radius:999px;flex-shrink:0;
+    background:rgba(196,181,253,.18);color:#C4B5FD;
+    display:inline-flex;align-items:center;justify-content:center;font-size:10.5px;
+  }
+  .launch-feats li .check::before{content:"\2713"}
+  .launch-feats li strong{color:#fff;font-weight:600}
+  .launch-price-block{
+    display:flex;flex-direction:column;align-items:flex-start;gap:6px;
+    padding:22px 24px;border-radius:18px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(20px) saturate(180%);
+    -webkit-backdrop-filter:blur(20px) saturate(180%);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.2);
+  }
+  .launch-from{
+    font-family:inherit;font-size:10.5px;font-weight:600;letter-spacing:.08em;
+    color:rgba(255,255,255,.55);text-transform:uppercase;
+  }
+  .launch-price{
+    display:flex;align-items:baseline;gap:4px;
+    font-family:inherit;font-weight:800;
+  }
+  .launch-price .num{font-size:72px;line-height:.9;letter-spacing:-0.05em;font-style:italic;color:#fff}
+  .launch-price .cur{font-size:26px;color:#C4B5FD;font-weight:700;font-style:normal;opacity:.85}
+  .launch-unit{
+    font-family:inherit;font-size:11.5px;font-weight:500;
+    color:rgba(255,255,255,.5);letter-spacing:.02em;
+  }
+  .launch-cta{
+    width:100%;margin-top:10px;padding:14px 22px;
+    background:#fff;color:var(--text);
+    border:none;border-radius:999px;
+    font-family:inherit;font-size:14.5px;font-weight:600;letter-spacing:.01em;
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;
+    transition:background .15s ease, transform .1s ease;
+  }
+  .launch-cta:hover{background:#F1F5F9}
+  .launch-cta:active{transform:translateY(1px)}
+  .launch-cta .arrow{width:14px;height:14px}
+  @media (max-width:1000px){
+    .launch-body{grid-template-columns:1fr;gap:24px}
+    .launch-head{flex-direction:column;align-items:flex-start;gap:14px}
+    .launch-countdown{align-self:stretch;justify-content:space-between}
+    .launch-price-block{width:100%}
+    .launch-price .num{font-size:58px}
+    .launch-pack{padding:26px 22px}
+  }
+
+  /* ─── Échantillon gratuit (sample form) ─── */
+  .sample-wrap{
+    margin:44px auto 40px;max-width:780px;
+    position:relative;
+    background:var(--soft);
+    border:2px dashed var(--v-border);border-radius:22px;
+    padding:44px 42px 38px;
+    text-align:center;
+  }
+  .sample-sticker{
+    position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+    padding:6px 14px;border-radius:999px;
     background:var(--v);color:#fff;
-    border:none;
-    width:24px;height:24px;border-radius:999px;
-    display:flex;align-items:center;justify-content:center;font-size:12px;
+    font-family:inherit;font-size:11.5px;font-weight:700;letter-spacing:.06em;
+    box-shadow:0 8px 20px rgba(124,58,237,.35);
+    white-space:nowrap;
   }
-  .cp-bonus-list{display:grid;gap:8px;list-style:none;padding:0;margin:0}
-  .cp-bonus-list li{
-    list-style:none;display:flex;gap:10px;align-items:center;
-    font-size:14px;font-weight:400;
-    color:rgba(255,255,255,.4);
-    transition:color .2s ease;
+  .sample-wrap h3{
+    font-family:inherit;font-size:clamp(26px,3.4vw,36px);font-weight:800;font-style:italic;
+    letter-spacing:-0.03em;line-height:1.05;
+    margin:0 0 10px;color:var(--text);
   }
-  .cp-bonus-list li .tick{
-    width:18px;height:18px;border-radius:999px;
-    border:1px solid rgba(255,255,255,.2);
-    flex-shrink:0;display:flex;align-items:center;justify-content:center;
-    font-size:10px;color:transparent;
-    transition:all .2s ease;
+  .sample-wrap h3 em{font-style:italic;color:var(--v);font-weight:800}
+  .sample-wrap p.sample-sub{
+    color:var(--muted);font-size:15px;margin:0 auto 26px;line-height:1.55;
+    max-width:520px;
   }
-  .cp-bonus-list li strong{font-weight:600}
-  .cp-bonus-list li.on{color:#fff}
-  .cp-bonus-list li.on .tick{
-    background:var(--v);color:#fff;border-color:var(--v);
+  .sample-form{
+    display:grid;gap:12px;text-align:left;max-width:520px;margin:0 auto;
   }
-  .cp-bonus-list li.on .tick::before{content:"✓"}
-  .cp-total{
-    display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
-    padding-top:24px;border-top:1px solid var(--line);
-    flex-wrap:wrap;
+  .sample-form .row{display:grid;gap:6px}
+  .sample-form label{
+    font-family:inherit;font-size:12.5px;font-weight:600;
+    color:var(--label);letter-spacing:.02em;
   }
-  .cp-total .total-lbl{
-    font-family:inherit;
-    font-size:12.5px;font-weight:500;letter-spacing:0;text-transform:none;
-    color:var(--muted);margin-bottom:4px;
+  .sample-form input,
+  .sample-form textarea{
+    width:100%;padding:12px 14px;
+    font-family:inherit;font-size:14.5px;font-weight:400;
+    background:#fff;color:var(--text);
+    border:1px solid var(--line);border-radius:10px;
+    transition:border-color .15s ease, box-shadow .15s ease;
+    resize:vertical;
   }
-  .cp-total .total-val{
-    font-family:inherit;
-    font-size:48px;font-weight:700;line-height:.95;letter-spacing:-0.035em;
-    color:var(--text);
+  .sample-form input:focus,
+  .sample-form textarea:focus{
+    outline:none;border-color:var(--v);
+    box-shadow:0 0 0 3px var(--v-ring);
   }
-  .cp-total .total-val .cur{font-size:24px;color:var(--muted)}
-  .cp-total .summary{
-    font-family:inherit;font-size:12.5px;color:var(--muted);
-    margin-top:6px;letter-spacing:0;font-weight:400;
+  .sample-form textarea{min-height:72px;font-family:inherit}
+  .sample-submit{
+    margin-top:8px;padding:14px 22px;
+    background:var(--v);color:#fff;border:none;border-radius:999px;
+    font-family:inherit;font-size:14.5px;font-weight:600;letter-spacing:.01em;
+    cursor:pointer;box-shadow:0 8px 22px rgba(124,58,237,.28);
+    transition:background .15s ease, transform .1s ease;
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;
   }
-  .cp-total .summary .bonus{color:var(--v);font-weight:600}
-  .btn-create{
-    background:var(--v);color:#fff;padding:14px 26px;font-weight:600;font-size:14.5px;
-    border:none;box-shadow:0 1px 2px rgba(15,23,42,.08);
-    border-radius:10px;
+  .sample-submit:hover{background:var(--v-hover)}
+  .sample-submit:active{transform:translateY(1px)}
+  .sample-submit:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}
+  .sample-success{
+    display:none;padding:22px 20px;border-radius:14px;
+    background:#F0FDF4;border:1px solid #A7F3D0;color:#065F46;
+    font-size:14.5px;line-height:1.55;font-weight:500;text-align:center;
   }
-  .btn-create:hover{background:var(--v-hover);transform:none;box-shadow:0 4px 16px rgba(124,58,237,.3)}
+  .sample-success.show{display:block}
+  .sample-success strong{color:#065F46;font-weight:700}
+  .sample-err{
+    display:none;padding:10px 14px;border-radius:10px;
+    background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;
+    font-size:13.5px;font-weight:500;text-align:center;margin-top:4px;
+  }
+  .sample-err.show{display:block}
+  @media (max-width:700px){
+    .sample-wrap{padding:36px 22px 28px;border-radius:18px}
+  }
 
   /* ─────────── FAQ ─────────── */
   .faq{display:grid;gap:10px;max-width:880px}
@@ -1547,16 +1643,16 @@
   <div class="wrap hero-wrap">
     <a href="#offre" class="hero-pill">
       <span class="hero-pill-tag">NEW</span>
-      <span data-i18n="hero.pill">3 places ouvertes pour avril 2026</span>
+      <span data-i18n="hero.pill">Pack de lancement à partir de 149€</span>
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
     </a>
 
     <h1 class="headline" data-i18n-html="hero.title">
-      Des ads qui <em>vendent.</em><br>En 24h.
+      Des ads qui <em>vendent.</em><br>En 48h.
     </h1>
 
     <p class="sub hero-sub" data-i18n="hero.sub">
-      Vidéos UGC, Pixar et statiques pour e-commerçants. On écrit, on monte, on livre. Sans template, sans abonnement, en moins de 24h.
+      Vidéos UGC, Pixar et statiques pour e-commerçants. On écrit, on monte, on livre. Sans template, sans abonnement, en moins de 48h.
     </p>
 
     <div class="hero-cta">
@@ -1594,7 +1690,7 @@
       </div>
       <div class="hs-sep"></div>
       <div class="hs-item">
-        <div class="hs-big">24h</div>
+        <div class="hs-big">48h</div>
         <div class="hs-lbl" data-i18n="stat.delivery">Du brief à la livraison</div>
       </div>
     </div>
@@ -1607,12 +1703,12 @@
     <span>Pas de template</span>
     <span>Pas de copier-coller</span>
     <span>Que du sur-mesure</span>
-    <span>Livré en 24h</span>
+    <span>Livré en 48h</span>
     <span>Fait pour toi</span>
     <span>Pas de template</span>
     <span>Pas de copier-coller</span>
     <span>Que du sur-mesure</span>
-    <span>Livré en 24h</span>
+    <span>Livré en 48h</span>
     <span>Fait pour toi</span>
   </div>
 </div>
@@ -1765,8 +1861,8 @@
           <div class="pb">
             <span class="pb-n">01</span>
             <div>
-              <h4>Brief 1:1 avec le fondateur</h4>
-              <p>Pas un junior qui lit un template. 30 min en direct pour capter ton produit, tes personas, tes angles.</p>
+              <h4>Formulaire de brief clair</h4>
+              <p>Pas un junior qui lit un template. 5 min en ligne pour capter ton produit, tes personas, tes angles.</p>
             </div>
           </div>
           <div class="pb">
@@ -1779,37 +1875,37 @@
           <div class="pb">
             <span class="pb-n">03</span>
             <div>
-              <h4>Révisions illimitées</h4>
+              <h4>Jusqu'à 10 révisions</h4>
               <p>On ajuste jusqu'à ce que tu valides. Tu repars avec des créas que tu veux vraiment diffuser.</p>
             </div>
           </div>
           <div class="pb">
             <span class="pb-n">04</span>
             <div>
-              <h4>Livré sous 24h chrono</h4>
-              <p>Brief le matin, créas le lendemain. Parce qu'une idée sans exécution, c'est juste du vent.</p>
+              <h4>Livré sous 48h chrono</h4>
+              <p>Brief déposé, créas sous 48h. Parce qu'une idée sans exécution, c'est juste du vent.</p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="perso-card">
-        <span class="sticker">Manifeste · 1:1</span>
+        <span class="sticker">Manifeste</span>
         <div class="perso-quote">
           "On ne vend pas des créas.<br>On vend <em>ta marque</em>,<br>à ta façon."
         </div>
         <div class="perso-meta">
           <div>
-            <div class="pm-num">30<span>min</span></div>
-            <div class="pm-lbl">de brief<br>en 1:1</div>
+            <div class="pm-num">5<span>min</span></div>
+            <div class="pm-lbl">de brief<br>en ligne</div>
           </div>
           <div>
             <div class="pm-num">0<span>tpl</span></div>
             <div class="pm-lbl">template<br>recyclé</div>
           </div>
           <div>
-            <div class="pm-num">∞<span>rev</span></div>
-            <div class="pm-lbl">révisions<br>incluses</div>
+            <div class="pm-num">10<span>×</span></div>
+            <div class="pm-lbl">révisions<br>max (Scale)</div>
           </div>
         </div>
       </div>
@@ -1836,7 +1932,7 @@
         <div>
           <span class="p-n">01 · Brief</span>
           <h3>On <em>écoute.</em></h3>
-          <p>30 minutes en 1:1. On capte ton produit, tes personas, tes concurrents, ton angle unique. Zéro template.</p>
+          <p>5 min sur ton formulaire de brief. On capte ton produit, tes personas, tes concurrents, ton angle unique. Zéro template.</p>
         </div>
         <div class="p-arrow">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
@@ -1856,7 +1952,7 @@
         <div>
           <span class="p-n">03 · Ship</span>
           <h3>On <em>livre.</em></h3>
-          <p>24h chrono. Pack complet + plan de test + angles de variantes. Plug &amp; play sur Meta, TikTok, YouTube.</p>
+          <p>48h chrono. Pack complet + plan de test + angles de variantes. Plug &amp; play sur Meta, TikTok, YouTube.</p>
         </div>
         <div class="p-arrow">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
@@ -1876,11 +1972,58 @@
         <h2 class="pricing-h2">Trois packs.<br>Un seul <em>objectif</em> :<br>scaler.</h2>
       </div>
       <div class="pricing-head-right">
-        <p class="section-sub">Starter pour tester. Pro pour scaler. Scale pour dominer. Tout est livré en moins de 24h, droits complets inclus.</p>
+        <p class="section-sub">Pack Lancement pour démarrer vite. Starter, Pro, Scale pour passer à l'échelle. Tout livré en moins de 48h, droits complets inclus.</p>
         <div class="pricing-meta">
-          <div class="pm-item"><b>24h</b><span>Livraison</span></div>
-          <div class="pm-item"><b>∞</b><span>Révisions Scale</span></div>
+          <div class="pm-item"><b>48h</b><span>Livraison</span></div>
+          <div class="pm-item"><b>10×</b><span>Révisions max</span></div>
           <div class="pm-item"><b>0€</b><span>Abonnement</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BANDEAU PROMO LANCEMENT -->
+    <div class="promo-banner">
+      <span class="star">★</span>
+      <span>PROMO LANCEMENT · <strong>-20% sur tous les packs</strong> · Places limitées</span>
+      <span class="star">★</span>
+    </div>
+
+    <!-- PACK LANCEMENT (spotlight) -->
+    <div class="launch-pack">
+      <div class="launch-glow"></div>
+      <div class="launch-head">
+        <span class="launch-sticker"><span class="fire">🔥</span> PACK LANCEMENT · EN COURS</span>
+        <div class="launch-countdown" id="launchCountdown" aria-label="Fin de l'offre">
+          <span class="lc-lbl">Fin de l'offre</span>
+          <div class="lc-cell"><span class="lc-num" id="lcH">72</span><span class="lc-unit">Heures</span></div>
+          <span class="lc-sep">:</span>
+          <div class="lc-cell"><span class="lc-num" id="lcM">00</span><span class="lc-unit">Min</span></div>
+          <span class="lc-sep">:</span>
+          <div class="lc-cell"><span class="lc-num" id="lcS">00</span><span class="lc-unit">Sec</span></div>
+        </div>
+      </div>
+      <div class="launch-body">
+        <div>
+          <h3 class="launch-title">Démarre à <em>149€</em>.<br>Teste sans t'engager.</h3>
+          <p class="launch-sub">Le pack découverte. On produit ton premier set complet en 48h, zéro abonnement, droits complets.</p>
+          <ul class="launch-feats">
+            <li><span class="check"></span><strong>2 vidéos</strong> × 2 hooks <span style="color:rgba(255,255,255,.5)">(4 variantes)</span></li>
+            <li><span class="check"></span><strong>5 statiques</strong> multi-formats</li>
+            <li><span class="check"></span>Scripts inclus</li>
+            <li><span class="check"></span>1 révision</li>
+            <li><span class="check"></span>Livraison <strong>&lt; 48h</strong></li>
+          </ul>
+        </div>
+        <div class="launch-price-block">
+          <span class="launch-from">À partir de</span>
+          <div class="launch-price">
+            <span class="num">149</span><span class="cur">€</span>
+          </div>
+          <span class="launch-unit">TTC · droits complets</span>
+          <button class="btn launch-cta" data-pack="launch" data-price="149">
+            <span>Prendre le pack</span>
+            <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -1890,12 +2033,14 @@
 
       <!-- STARTER -->
       <div class="tier" data-idx="01">
+        <span class="promo-badge">LANCEMENT -20%</span>
         <div class="tier-idx">01</div>
         <div class="tier-top">
           <span class="tier-tag">Starter</span>
           <p class="tier-sub">Pour tester vite.</p>
         </div>
         <div class="tier-price">
+          <span class="num-old">249€</span>
           <span class="num">199</span><span class="cur">€</span>
           <span class="tier-unit">TTC</span>
         </div>
@@ -1906,7 +2051,7 @@
           <li><span class="check"></span><strong>10 statiques</strong> HD</li>
           <li><span class="check"></span>Scripts inclus</li>
           <li><span class="check"></span>1 révision</li>
-          <li><span class="check"></span>Livraison <strong>&lt; 24h</strong></li>
+          <li><span class="check"></span>Livraison <strong>&lt; 48h</strong></li>
         </ul>
         <button class="btn tier-cta" data-pack="starter" data-price="199">
           <span>Choisir Starter</span>
@@ -1917,6 +2062,7 @@
       <!-- PRO (featured) -->
       <div class="tier featured" data-idx="02">
         <div class="tier-glow"></div>
+        <span class="promo-badge">LANCEMENT -20%</span>
         <span class="tier-badge"><span class="tb-dot"></span> Le plus choisi</span>
         <div class="tier-idx">02</div>
         <div class="tier-top">
@@ -1924,7 +2070,8 @@
           <p class="tier-sub">Pour scaler.</p>
         </div>
         <div class="tier-price">
-          <span class="num">299</span><span class="cur">€</span>
+          <span class="num-old">349€</span>
+          <span class="num">279</span><span class="cur">€</span>
           <span class="tier-unit">TTC</span>
         </div>
         <p class="tier-for">Pour e-commerçants 10k–100k€/mois qui veulent pousser leur ROAS.</p>
@@ -1935,9 +2082,9 @@
           <li><span class="check"></span>Scripts inclus</li>
           <li><span class="check"></span>Stratégie d'angles</li>
           <li><span class="check"></span>2 révisions</li>
-          <li><span class="check"></span>Livraison <strong>&lt; 24h</strong></li>
+          <li><span class="check"></span>Livraison <strong>&lt; 48h</strong></li>
         </ul>
-        <button class="btn tier-cta featured" data-pack="pro" data-price="299">
+        <button class="btn tier-cta featured" data-pack="pro" data-price="279">
           <span>Choisir Pro</span>
           <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
         </button>
@@ -1945,13 +2092,15 @@
 
       <!-- SCALE -->
       <div class="tier dark" data-idx="03">
+        <span class="promo-badge">LANCEMENT -20%</span>
         <div class="tier-idx">03</div>
         <div class="tier-top">
           <span class="tier-tag">Scale</span>
           <p class="tier-sub">Pour dominer.</p>
         </div>
         <div class="tier-price">
-          <span class="num">499</span><span class="cur">€</span>
+          <span class="num-old">599€</span>
+          <span class="num">479</span><span class="cur">€</span>
           <span class="tier-unit">TTC</span>
         </div>
         <p class="tier-for">Pour marques 100k€+/mois et agences qui veulent un flux constant de créas.</p>
@@ -1962,9 +2111,10 @@
           <li><span class="check"></span>Scripts inclus</li>
           <li><span class="check"></span>Stratégie complète + personas</li>
           <li><span class="check"></span><strong>Reporting créatif</strong></li>
-          <li><span class="check"></span>Révisions illimitées</li>
+          <li><span class="check"></span>Jusqu'à <strong>10 révisions</strong></li>
+          <li><span class="check"></span>Livraison <strong>&lt; 48h</strong></li>
         </ul>
-        <button class="btn tier-cta dark" data-pack="scale" data-price="499">
+        <button class="btn tier-cta dark" data-pack="scale" data-price="479">
           <span>Choisir Scale</span>
           <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
         </button>
@@ -1975,6 +2125,39 @@
       <span class="tf-lbl">Options</span>
       Vidéo supplémentaire <strong>+79€</strong> · Adaptation langue EN/ES/DE <strong>+30€</strong> par vidéo
     </p>
+
+    <!-- ÉCHANTILLON GRATUIT -->
+    <div class="sample-wrap" id="sampleWrap">
+      <span class="sample-sticker">🎁 ÉCHANTILLON GRATUIT</span>
+      <h3>Pas convaincu ? <em>Teste gratuitement.</em></h3>
+      <p class="sample-sub">Donne-nous ton produit et ton audience, on te génère <strong>un vrai échantillon créa</strong> à ta marque. Livré sous 24-48h, sans engagement, sans carte bancaire.</p>
+      <form class="sample-form" id="sampleForm" novalidate>
+        <div class="row">
+          <label for="smEmail">Email</label>
+          <input id="smEmail" type="email" name="email" placeholder="toi@tamarque.com" autocomplete="email" required>
+        </div>
+        <div class="row">
+          <label for="smUrl">Lien produit</label>
+          <input id="smUrl" type="url" name="product_url" placeholder="https://tamarque.com/produit" required>
+        </div>
+        <div class="row">
+          <label for="smAudience">Audience cible</label>
+          <input id="smAudience" type="text" name="audience" placeholder="Femmes 25-40, actives, soin naturel…" required>
+        </div>
+        <div class="row">
+          <label for="smProblem">Problème que ton produit résout</label>
+          <textarea id="smProblem" name="problem" placeholder="Ce qui t'empêche de scaler aujourd'hui…" required></textarea>
+        </div>
+        <button type="submit" class="sample-submit" id="smSubmit">
+          <span>Recevoir mon échantillon →</span>
+        </button>
+        <div class="sample-err" id="smErr"></div>
+      </form>
+      <div class="sample-success" id="smSuccess">
+        <strong>Échantillon en cours de création !</strong><br>
+        On t'envoie ton vrai échantillon créa par email sous 24-48h. Check aussi tes spams au cas où.
+      </div>
+    </div>
 
   </div>
 </section>
@@ -1992,27 +2175,27 @@
     <div class="faq">
       <details open>
         <summary>C'est quoi concrètement le pack ?<span class="plus">+</span></summary>
-        <p>Un brief 1:1 de 30 min avec le fondateur, puis 3 créas vidéo IA (15 à 30s) et 5 visuels statiques HD, 100% personnalisés à ta marque et tes personas. Livraison en moins de 24h. Formats Meta et TikTok, prêts à uploader dans ton ad manager.</p>
+        <p>Un formulaire de brief (5 min) qu'on lit à la main, puis des créas vidéo IA (15 à 30s) et des visuels statiques HD, 100% personnalisés à ta marque et tes personas. Livraison en moins de 48h. Formats Meta et TikTok, prêts à uploader dans ton ad manager.</p>
       </details>
       <details>
         <summary>C'est vraiment du sur-mesure ou vous recyclez ?<span class="plus">+</span></summary>
-        <p>Zéro template, zéro recyclage. Chaque créa est pensée, écrite et montée pour ton produit, à partir de ton brief 1:1. C'est pour ça qu'on prend peu de clients en même temps : la qualité passe avant le volume.</p>
+        <p>Zéro template, zéro recyclage. Chaque créa est pensée, écrite et montée pour ton produit, à partir de ton brief. C'est pour ça qu'on prend peu de clients en même temps : la qualité passe avant le volume.</p>
       </details>
       <details>
         <summary>C'est pour quel type de marque ?<span class="plus">+</span></summary>
-        <p>E-commerce, de la DNVB qui lance aux marques qui font +150k€/mois. Le pack Starter est fait pour démarrer sans engagement, juste pour voir ce que ça donne.</p>
+        <p>E-commerce, de la DNVB qui lance aux marques qui font +150k€/mois. Le pack Lancement à 149€ est fait pour démarrer sans engagement, juste pour voir ce que ça donne.</p>
       </details>
       <details>
         <summary>Et si les créas performent pas ?<span class="plus">+</span></summary>
-        <p>On itère. Révisions illimitées dans le pack. Et si rien ne passe le test après diffusion, on te refait un cycle d'angles gratuitement.</p>
+        <p>On itère. 1 révision sur Starter, 2 sur Pro, jusqu'à 10 sur Scale. Et si rien ne passe le test après diffusion, on te refait un cycle d'angles.</p>
       </details>
       <details>
         <summary>Pourquoi l'IA plutôt qu'un shooting ?<span class="plus">+</span></summary>
-        <p>Vitesse et coût. Un shooting UGC c'est 2 semaines et 2000€ minimum. L'IA bien maîtrisée te donne 80% du résultat en 24h pour 199€. On ne remplace pas l'humain, on remplace la lenteur.</p>
+        <p>Vitesse et coût. Un shooting UGC c'est 2 semaines et 2000€ minimum. L'IA bien maîtrisée te donne 80% du résultat en 48h pour 149€. On ne remplace pas l'humain, on remplace la lenteur.</p>
       </details>
       <details>
         <summary>Comment on démarre ?<span class="plus">+</span></summary>
-        <p>Clique sur "Choisir l'offre", on cale un créneau WhatsApp de 30 min dans la foulée, puis livraison sous 24h.</p>
+        <p>Clique sur "Choisir l'offre", tu remplis le formulaire de brief (5 min), on lance la prod, livraison sous 48h.</p>
       </details>
     </div>
   </div>
@@ -2022,14 +2205,14 @@
 <section id="affiliate" style="padding-top:30px">
   <div class="wrap">
     <div class="aff-wrap">
-      <span class="aff-sticker">AFFILIATION · 20%</span>
+      <span class="aff-sticker">AFFILIATION · 15%</span>
       <div class="aff-grid">
         <div>
           <span class="kicker aff-kicker">07 · Programme</span>
-          <h2>Ramène un pote.<br><span class="serif-em">Touche&nbsp;20%.</span></h2>
+          <h2>Ramène un pote.<br><span class="serif-em">Touche&nbsp;15%.</span></h2>
           <p class="aff-sub">
             Tu connais un e-commerçant qui galère avec ses créas ? Tu lui envoies, il commande,
-            <strong>tu touches 20% cash</strong> sur chaque vente, à vie.
+            <strong>tu touches 15% cash</strong> sur chaque vente, à vie.
             Zéro bullshit, zéro plafond.
           </p>
           <a href="https://wa.me/33642852291?text=Hello%2C%20je%20veux%20devenir%20affili%C3%A9%20hookd." target="_blank" rel="noopener" class="btn btn-lime" style="margin-top:10px">
@@ -2050,18 +2233,18 @@
           </div>
           <div class="aff-step">
             <div class="aff-n">03</div>
-            <h4>Tu touches 20%</h4>
+            <h4>Tu touches 15%</h4>
             <p>Virement sous 7 jours ou réduction sur ton prochain pack. À toi de voir.</p>
           </div>
         </div>
       </div>
 
       <div class="aff-calc">
-        <div class="aff-calc-lbl">Exemple : ton pote prend le pack à 150€</div>
+        <div class="aff-calc-lbl">Exemple : ton pote prend le Starter à 199€</div>
         <div class="aff-calc-row">
-          <div><span class="aff-tag">Il paie</span><span class="aff-big">150€</span></div>
+          <div><span class="aff-tag">Il paie</span><span class="aff-big">199€</span></div>
           <div class="aff-arrow">→</div>
-          <div><span class="aff-tag lime">Tu touches</span><span class="aff-big lime">30€</span></div>
+          <div><span class="aff-tag lime">Tu touches</span><span class="aff-big lime">~30€</span></div>
           <div class="aff-arrow">×</div>
           <div><span class="aff-tag">Par commande</span><span class="aff-big">∞</span></div>
         </div>
@@ -2167,17 +2350,13 @@
           <div class="hd">Contact</div>
           <a href="https://wa.me/33642852291">WhatsApp</a>
           <a href="#offre">Commander un pack</a>
-        </div>
-        <div class="foot-link-col">
-          <div class="hd">Suivre</div>
-          <a href="#">X / Twitter</a>
-          <a href="#">Discord</a>
+          <a href="#affiliate">Devenir affilié</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 · hookd studio · all rights reserved</span>
-      <span>Made in Paris · ◆</span>
+      <span>Made in Marseille · ◆</span>
     </div>
   </div>
 </footer>
@@ -2227,11 +2406,11 @@
       <div class="welcome-wrap">
         <span class="wsticker">★ Onboarding · v1</span>
         <h3>Dis-nous <em>qui tu es.</em><br>On prépare un <u>pack sur-mesure</u>.</h3>
-        <p class="intro">12 questions courtes pour qu'on arrive préparés. <strong>Zéro bullshit, zéro commercial.</strong> À la fin, Jorys relit ton brief à la main et revient sous 24h.</p>
+        <p class="intro">12 questions courtes pour qu'on arrive préparés. <strong>Zéro bullshit, zéro commercial.</strong> À la fin, Jorys relit ton brief à la main et revient sous 48h.</p>
         <div class="welcome-meta">
           <div class="wm"><b>12</b><span>Questions</span></div>
           <div class="wm"><b>~90s</b><span>Au total</span></div>
-          <div class="wm"><b>&lt; 24h</b><span>Réponse</span></div>
+          <div class="wm"><b>&lt; 48h</b><span>Réponse</span></div>
         </div>
       </div>
       <div class="m-nav" style="justify-content:space-between;padding:0 32px 28px 32px;border-top:none">
@@ -2397,10 +2576,10 @@
       <h3 class="m-title">Quel pack <em>t'intéresse</em> ?</h3>
       <p class="m-desc">Tu peux aussi nous dire "je sais pas", on te guide.</p>
       <div class="qcm" data-field="pack" data-mode="single">
-        <div class="qcm-opt" data-val="launch"><span class="emoji">🎁</span> Pack de lancement · 150€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="launch"><span class="emoji">🎁</span> Pack de lancement · 149€ <span class="check"></span></div>
         <div class="qcm-opt" data-val="starter"><span class="emoji">🥉</span> Starter · 199€ <span class="check"></span></div>
-        <div class="qcm-opt" data-val="pro"><span class="emoji">🥈</span> Pro · 299€ <span class="check"></span></div>
-        <div class="qcm-opt" data-val="scale"><span class="emoji">🥇</span> Scale · 499€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="pro"><span class="emoji">🥈</span> Pro · 279€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="scale"><span class="emoji">🥇</span> Scale · 479€ <span class="check"></span></div>
         <div class="qcm-opt" data-val="custom"><span class="emoji">🛠️</span> Sur-mesure <span class="check"></span></div>
         <div class="qcm-opt" data-val="unsure"><span class="emoji">🤷</span> Je sais pas encore <span class="check"></span></div>
       </div>
@@ -2433,7 +2612,7 @@
       <span class="m-giant">11</span>
       <div class="m-kicker">◆ 11 / Ton contact</div>
       <h3 class="m-title">On te <em>répond où</em> ?</h3>
-      <p class="m-desc">Le WhatsApp c'est le plus rapide, on confirme sous 24h.</p>
+      <p class="m-desc">Le WhatsApp c'est le plus rapide, on confirme sous 48h.</p>
       <div class="contact-grid">
         <div class="row2">
           <div class="inp-wrap">
@@ -2484,7 +2663,7 @@
         <h3>Formulaire <em>bien envoyé.</em></h3>
         <p class="sub">Merci <span id="successName">!</span> On a tout ce qu'il faut pour préparer ton pack.</p>
         <div class="success-next">
-          <div class="ln"><span><b>Réponse sous 24h</b> par WhatsApp en priorité, email en backup.</span></div>
+          <div class="ln"><span><b>Réponse sous 48h</b> par WhatsApp en priorité, email en backup.</span></div>
           <div class="ln"><span>Jorys (fondateur) <b>révise ton brief à la main</b> avant de te revenir.</span></div>
           <div class="ln"><span>En attendant, tu peux <b>nous envoyer ton site / tes créas</b> sur WhatsApp.</span></div>
         </div>
@@ -2503,9 +2682,10 @@
 
   const PACK_LABELS = {
     starter: 'Starter · 199€',
-    pro:     'Pro · 299€',
-    scale:   'Scale · 499€',
-    custom:  'Sur-mesure',
+    pro:     'Pro · 279€',
+    scale:   'Scale · 479€',
+    launch:  'Pack de lancement · 149€',
+    custom:  'Échantillon gratuit',
     unsure:  'Pas encore décidé'
   };
 
@@ -2513,9 +2693,9 @@
   const I18N = {
     fr: {
       'nav.creas':'Créas','nav.approche':'Approche','nav.offre':'Offre','nav.affiliate':'Affiliation','nav.cta':'Lancer un pack',
-      'hero.pill':'3 places ouvertes pour avril 2026',
-      'hero.title':'Des ads qui <em>vendent.</em><br>En 24h.',
-      'hero.sub':"Vidéos UGC, Pixar et statiques pour e-commerçants. On écrit, on monte, on livre. Sans template, sans abonnement, en moins de 24h.",
+      'hero.pill':'Pack de lancement à partir de 149€',
+      'hero.title':'Des ads qui <em>vendent.</em><br>En 48h.',
+      'hero.sub':"Vidéos UGC, Pixar et statiques pour e-commerçants. On écrit, on monte, on livre. Sans template, sans abonnement, en moins de 48h.",
       'hero.cta1':'Voir les packs','hero.cta2':'Voir les créas',
       'hero.rating':'<b>+500K€</b> générés avec nos ads',
       'stat.generated':'Générés avec nos ads','stat.cpa':'CPA moyen observé','stat.ca':'CA mensuel clients','stat.delivery':'Du brief à la livraison',
@@ -2524,9 +2704,9 @@
     },
     en: {
       'nav.creas':'Creatives','nav.approche':'Approach','nav.offre':'Pricing','nav.affiliate':'Affiliate','nav.cta':'Start a pack',
-      'hero.pill':'3 spots open for April 2026',
-      'hero.title':'Ads that <em>convert.</em><br>In 24h.',
-      'hero.sub':"UGC, Pixar and static creatives for e-commerce. We write, edit, ship. No templates, no subscription, in under 24 hours.",
+      'hero.pill':'Launch pack from €149',
+      'hero.title':'Ads that <em>convert.</em><br>In 48h.',
+      'hero.sub':"UGC, Pixar and static creatives for e-commerce. We write, edit, ship. No templates, no subscription, in under 48 hours.",
       'hero.cta1':'See the packs','hero.cta2':'See creatives',
       'hero.rating':'<b>+500K€</b> generated with our ads',
       'stat.generated':'Generated with our ads','stat.cpa':'Average CPA drop','stat.ca':'Monthly client revenue','stat.delivery':'From brief to delivery',
@@ -2535,9 +2715,9 @@
     },
     es: {
       'nav.creas':'Creativos','nav.approche':'Enfoque','nav.offre':'Precios','nav.affiliate':'Afiliación','nav.cta':'Lanzar un pack',
-      'hero.pill':'3 plazas abiertas para abril 2026',
-      'hero.title':'Anuncios que <em>venden.</em><br>En 24h.',
-      'hero.sub':"Vídeos UGC, Pixar y estáticos para e-commerce. Escribimos, montamos, entregamos. Sin plantillas, sin suscripción, en menos de 24 horas.",
+      'hero.pill':'Pack de lanzamiento desde 149€',
+      'hero.title':'Anuncios que <em>venden.</em><br>En 48h.',
+      'hero.sub':"Vídeos UGC, Pixar y estáticos para e-commerce. Escribimos, montamos, entregamos. Sin plantillas, sin suscripción, en menos de 48 horas.",
       'hero.cta1':'Ver los packs','hero.cta2':'Ver creativos',
       'hero.rating':'<b>+500K€</b> generados con nuestros anuncios',
       'stat.generated':'Generados con anuncios','stat.cpa':'CPA medio observado','stat.ca':'Facturación mensual clientes','stat.delivery':'Del brief a la entrega',
@@ -2595,7 +2775,7 @@
   */
   const TELEGRAM_ENDPOINT = ""; // ex: "https://hookd-notify.ton-compte.workers.dev"
   const TELEGRAM_BOT_TOKEN = "8702556193:AAGMt2iZWxoyjArFfL95BSHSkrPMxzPo5mc";
-  const TELEGRAM_CHAT_ID   = "5445357219"; // Jorys / @scampiaaaa
+  const TELEGRAM_CHAT_IDS  = ["5445357219", "-5112129426"]; // Jorys + groupe Hookd
 
   /* ───── Onboarding : state ───── */
   const QUESTION_STEPS = [1,2,3,4,5,6,7,8,9,10,11,12];
@@ -2951,18 +3131,126 @@
       return r.json().catch(() => ({}));
     }
     // Fallback : appel direct à l'API Telegram (token exposé côté client)
-    if(!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === 'YOUR_CHAT_ID'){
+    if(!TELEGRAM_CHAT_IDS || !TELEGRAM_CHAT_IDS.length){
       throw new Error('chat_id not configured');
     }
     const url = 'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage';
-    const r = await fetch(url, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode:'Markdown' })
-    });
-    if(!r.ok) throw new Error('telegram ' + r.status);
-    return r.json();
+    const results = await Promise.allSettled(TELEGRAM_CHAT_IDS.map(cid =>
+      fetch(url, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ chat_id: cid, text, parse_mode:'Markdown' })
+      }).then(r => { if(!r.ok) throw new Error('telegram ' + r.status); return r.json(); })
+    ));
+    if(!results.some(x => x.status === 'fulfilled')) throw new Error('telegram all failed');
+    return results;
   }
+
+  /* ─── Countdown 72h liquid glass (Pack Lancement) ─── */
+  (function launchCountdown(){
+    const H = document.getElementById('lcH');
+    const M = document.getElementById('lcM');
+    const S = document.getElementById('lcS');
+    if(!H || !M || !S) return;
+    const KEY = 'hookd_launch_end';
+    const DUR = 72 * 3600 * 1000;
+    let end = parseInt(localStorage.getItem(KEY), 10);
+    if(!end || isNaN(end) || end < Date.now()){
+      end = Date.now() + DUR;
+      localStorage.setItem(KEY, String(end));
+    }
+    const pad = n => String(n).padStart(2,'0');
+    function tick(){
+      let diff = end - Date.now();
+      if(diff <= 0){
+        end = Date.now() + DUR;
+        localStorage.setItem(KEY, String(end));
+        diff = DUR;
+      }
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      H.textContent = pad(h);
+      M.textContent = pad(m);
+      S.textContent = pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  /* ─── Sample form (échantillon gratuit) ─── */
+  (function sampleForm(){
+    const form    = document.getElementById('sampleForm');
+    const submit  = document.getElementById('smSubmit');
+    const success = document.getElementById('smSuccess');
+    const err     = document.getElementById('smErr');
+    if(!form) return;
+    const email    = document.getElementById('smEmail');
+    const url      = document.getElementById('smUrl');
+    const audience = document.getElementById('smAudience');
+    const problem  = document.getElementById('smProblem');
+    function isValidEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e); }
+    function fmtSample(d){
+      return [
+        '🎁 *ÉCHANTILLON GRATUIT — nouvelle demande*',
+        '',
+        '✉️ Email : ' + d.email,
+        '🔗 Produit : ' + d.product_url,
+        '🎯 Audience : ' + d.audience,
+        '💬 Problème : ' + d.problem,
+        '',
+        '_Envoyé depuis la landing hookd._'
+      ].join('\n');
+    }
+    async function sendSample(d){
+      if(TELEGRAM_ENDPOINT){
+        const r = await fetch(TELEGRAM_ENDPOINT, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ text: fmtSample(d), payload: { type:'sample', ...d } })
+        });
+        if(!r.ok) throw new Error('proxy ' + r.status);
+        return;
+      }
+      const u = 'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage';
+      const results = await Promise.allSettled(TELEGRAM_CHAT_IDS.map(cid =>
+        fetch(u, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ chat_id: cid, text: fmtSample(d), parse_mode:'Markdown' })
+        }).then(r => { if(!r.ok) throw new Error('telegram ' + r.status); })
+      ));
+      if(!results.some(x => x.status === 'fulfilled')) throw new Error('telegram all failed');
+    }
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      err.classList.remove('show'); err.textContent='';
+      const data = {
+        email: email.value.trim(),
+        product_url: url.value.trim(),
+        audience: audience.value.trim(),
+        problem: problem.value.trim()
+      };
+      if(!isValidEmail(data.email)){ err.textContent='Email invalide.'; err.classList.add('show'); return; }
+      if(!/^https?:\/\//.test(data.product_url)){ err.textContent='Lien produit invalide (https://…).'; err.classList.add('show'); return; }
+      if(!data.audience){ err.textContent='Décris ton audience.'; err.classList.add('show'); return; }
+      if(!data.problem){ err.textContent='Décris le problème résolu.'; err.classList.add('show'); return; }
+      submit.disabled = true;
+      const oldLabel = submit.innerHTML;
+      submit.innerHTML = '<span>Envoi en cours…</span>';
+      try {
+        await sendSample(data);
+        form.style.display = 'none';
+        success.classList.add('show');
+      } catch(ex){
+        console.error('sample submit failed', ex);
+        err.textContent = '⚠ Envoi impossible, réessaie dans un instant.';
+        err.classList.add('show');
+        submit.disabled = false;
+        submit.innerHTML = oldLabel;
+      }
+    });
+  })();
 
 </script>
 
