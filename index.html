@@ -815,6 +815,12 @@
     margin:0 0 50px;letter-spacing:0;font-weight:400;
   }
   .tiers-foot strong{color:var(--text);font-weight:600}
+  .tiers-note{
+    margin:10px 0 0;text-align:center;
+    font-family:inherit;font-size:13px;color:var(--muted);
+    line-height:1.55;max-width:780px;margin-left:auto;margin-right:auto;
+  }
+  .tiers-note strong{color:var(--text);font-weight:600}
   .tf-lbl{
     display:inline-block;padding:4px 10px;border-radius:999px;
     background:var(--v);color:#fff;
@@ -1376,6 +1382,10 @@
     box-shadow:0 0 0 3px var(--v-ring);
   }
   .qcm-opt .emoji{font-size:18px;line-height:1}
+  .qcm-opt .qcm-old{
+    text-decoration:line-through;color:var(--muted);
+    font-weight:500;margin-right:4px;opacity:.75;
+  }
   .qcm-opt .check{
     margin-left:auto;width:20px;height:20px;border-radius:999px;
     border:1.5px solid var(--s-border);background:var(--s-bg);
@@ -1943,7 +1953,7 @@
         <div>
           <span class="p-n">02 · Créa</span>
           <h3>On <em>crée.</em></h3>
-          <p>3 vidéos + 5 statiques, écrites, montées pour toi. Hooks testés, angles variés, variations prêtes à scaler.</p>
+          <p>Vidéos UGC IA + statiques HD, écrites, montées pour toi. Hooks testés, angles variés, variations prêtes à scaler.</p>
         </div>
         <div class="p-arrow">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
@@ -2126,6 +2136,9 @@
       <span class="tf-lbl">Options</span>
       Vidéo supplémentaire <strong>+79€</strong> · Adaptation langue EN/ES/DE <strong>+30€</strong> par vidéo
     </p>
+    <p class="tiers-note">
+      Révisions = ajustements de script uniquement. Tout changement de vidéo, avatar ou style = nouvelle vidéo (<strong>+79€</strong>).
+    </p>
 
     <!-- ÉCHANTILLON GRATUIT -->
     <div class="sample-wrap" id="sampleWrap">
@@ -2189,6 +2202,10 @@
       <details>
         <summary>Et si les créas performent pas ?<span class="plus">+</span></summary>
         <p>On itère. 1 révision sur Starter, 2 sur Pro, jusqu'à 10 sur Scale. Et si rien ne passe le test après diffusion, on te refait un cycle d'angles.</p>
+      </details>
+      <details>
+        <summary>C'est quoi exactement une révision ?<span class="plus">+</span></summary>
+        <p>Une révision c'est un ajustement de script : textes, hooks, CTA, sous-titres. Tu nous envoies tous tes retours en un seul message, on modifie. Pour changer une vidéo, un avatar, une scène ou un style, c'est une nouvelle vidéo à <strong>79€</strong>.</p>
       </details>
       <details>
         <summary>Pourquoi l'IA plutôt qu'un shooting ?<span class="plus">+</span></summary>
@@ -2578,10 +2595,9 @@
       <p class="m-desc">Tu peux aussi nous dire "je sais pas", on te guide.</p>
       <div class="qcm" data-field="pack" data-mode="single">
         <div class="qcm-opt" data-val="launch"><span class="emoji">🎁</span> Pack de lancement · 149€ <span class="check"></span></div>
-        <div class="qcm-opt" data-val="starter"><span class="emoji">🥉</span> Starter · 199€ <span class="check"></span></div>
-        <div class="qcm-opt" data-val="pro"><span class="emoji">🥈</span> Pro · 279€ <span class="check"></span></div>
-        <div class="qcm-opt" data-val="scale"><span class="emoji">🥇</span> Scale · 479€ <span class="check"></span></div>
-        <div class="qcm-opt" data-val="custom"><span class="emoji">🛠️</span> Sur-mesure <span class="check"></span></div>
+        <div class="qcm-opt" data-val="starter"><span class="emoji">🥉</span> Starter · <span class="qcm-old">249€</span>199€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="pro"><span class="emoji">🥈</span> Pro · <span class="qcm-old">349€</span>279€ <span class="check"></span></div>
+        <div class="qcm-opt" data-val="scale"><span class="emoji">🥇</span> Scale · <span class="qcm-old">599€</span>479€ <span class="check"></span></div>
         <div class="qcm-opt" data-val="unsure"><span class="emoji">🤷</span> Je sais pas encore <span class="check"></span></div>
       </div>
       <div class="m-nav">
